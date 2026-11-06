@@ -1,5 +1,11 @@
 # Cambios
 
+## 1.3.2
+
+- `npm run deploy:guided` ya no falla al iniciar sesión justo después de subir los secretos: espera y reintenta.
+- La documentación nombra la pestaña real del dashboard: **Agente de voz → Conexiones**.
+- `conectar-telefono` agrega el camino con Twilio CLI: iniciar sesión sin pasar datos por el chat, buscar y comprar un número con OK explícito.
+
 ## 1.3.1
 
 - `npm run install-skills` instala los 12 skills en Claude Code y Codex, y guarda en cada uno la ruta del kit. Los skills leen esa ruta antes de pedirla.

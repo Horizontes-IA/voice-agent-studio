@@ -24,7 +24,7 @@ Para su propio negocio, pídele nombre, ciudad, servicios con duración, equipo 
 
 1. Hacen falta sus cuentas de Cloudflare y ElevenLabs. Cada una factura su consumo.
 2. Dentro del proyecto corre `npx wrangler login`, avísale que autorice en el navegador, y luego `npm run deploy:guided`.
-3. Dale la dirección publicada. Ella entra al dashboard, abre **Agente de voz**, pega su API key en la pestaña de integraciones, elige una voz y publica.
+3. Dale la dirección publicada. Ella entra al dashboard, abre **Agente de voz**, pega su API key en la pestaña **Conexiones**, elige una voz y publica.
 
 **Nunca pidas una API key por el chat.**
 

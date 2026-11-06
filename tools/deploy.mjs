@@ -58,7 +58,13 @@ export async function deploy(root=process.cwd(),{voiceId=process.env.ELEVENLABS_
     console.log('Worker: '+state.origin+'\nCandidato protegido. Continúa con PRODUCCION.md para Access, OTP, CRM y aceptación; no se activa automáticamente.');return state;
   }
   if(!secrets.ELEVENLABS_API_KEY){console.log('Worker: '+state.origin+'\nConecta ElevenLabs y selecciona una voz desde el dashboard; o repite con ELEVENLABS_API_KEY y ELEVENLABS_VOICE_ID en el entorno privado.');return state;}
-  const login=await fetch(state.origin+'/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:secrets.ADMIN_PASSWORD})});
+  // Los secretos recién subidos tardan unos segundos en llegar al Worker. El login admite 10 intentos cada 15 minutos.
+  let login;
+  for(let n=0;n<5;n++){
+    await new Promise(resolve=>setTimeout(resolve,5000));
+    login=await fetch(state.origin+'/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:secrets.ADMIN_PASSWORD})});
+    if(login.ok)break;
+  }
   const cookie=login.headers.get('set-cookie')?.split(';')[0];if(!login.ok||!cookie)throw new Error('No se pudo iniciar sesión privada en el Worker.');
   const api=async(endpoint,body,method=body===undefined?'GET':'POST')=>{const response=await fetch(state.origin+'/api'+endpoint,{method,headers:{cookie,'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});const data=await response.json();if(!response.ok)throw new Error('API '+endpoint+' devolvió '+response.status+'. Consulta el dashboard privado.');return data;};
   const dashboard=await api('/dashboard');

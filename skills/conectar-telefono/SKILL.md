@@ -27,18 +27,25 @@ Empieza por el más simple que sirva, y confirma la decisión con el usuario:
 
 Trabaja en el proyecto del cliente y en un entorno de pruebas.
 
-1. **Número.** En ElevenLabs Agents, pestaña Phone Numbers:
+1. **Twilio CLI (opcional).** Instálalo con `brew tap twilio/brew && brew install twilio` o `npm install -g twilio-cli`.
+   - La persona corre `twilio login` en su propia terminal. Nunca pidas el Account SID ni el Auth Token por el chat.
+   - Para buscar: `twilio api:core:available-phone-numbers:local:list --country-code MX --voice-enabled --limit 5`.
+   - Para comprar: `twilio api:core:incoming-phone-numbers:create --phone-number +52...`. Compra cuesta dinero: enseña el precio y espera su OK explícito.
+   - Muchos países piden documentos antes de asignar un número. En México, identificación y comprobante de domicilio para personas, o constancia fiscal para empresas. Confírmalo en las guías de Twilio.
+   - Una cuenta de prueba solo llama a números verificados.
+   - Antes de importar un número revisa `twilio phone-numbers:list`. ElevenLabs lo reconfigura: no uses uno que ya atiende otro sistema.
+2. **Número.** En ElevenLabs entra al agente: Channels, Telephony, Add number, From Twilio. También está la pestaña Phone Numbers de Agents y el endpoint `POST /v1/convai/phone-numbers`:
    - **Twilio:** importa con Label, Phone Number, Twilio SID y Twilio Token. Prefiere una API key de Twilio con permisos limitados. Un número comprado admite entrada y salida; un caller ID verificado solo salida.
    - **SIP:** Import number, From SIP Trunk. Empieza con TCP o TLS y autenticación digest; UDP es experimental. Revisa puertos, códecs y firewall con quien administra el conmutador.
-2. **Webhook de sesión.** Añade en `worker/index.ts` una ruta bajo `/api/webhooks/` que:
+3. **Webhook de sesión.** Añade en `worker/index.ts` una ruta bajo `/api/webhooks/` que:
    - Compruebe un secreto en un encabezado. Esa ruta se salta la sesión de administración, así que sin este control queda abierta.
    - Reciba `caller_id`, `called_number`, `agent_id`, `call_sid` y `conversation_id`, y rechace un `agent_id` ajeno.
    - Cree una fila en `voice_sessions` con el hash de un token nuevo, `verified` en 0 y una caducidad corta.
    - Responda con `type` igual a `conversation_initiation_client_data` y `dynamic_variables` con todas las variables que usa el agente: `session_token`, `patient_name`, `clinic_date` y `pending_operation_id`.
-3. **Actívalo en ElevenLabs.** Registra la URL y el secreto en los ajustes de Agents, y activa la obtención de datos de inicio para llamadas de Twilio en la pestaña Security del agente.
-4. **Conversación.** Registra cada llamada en `conversations` con `channel` igual a `phone` y el webhook de fin de llamada para los minutos. Sin esto, el dashboard no la muestra.
-5. **Prompt.** Añade reglas de teléfono: aviso de que es un asistente virtual, aviso de grabación si aplica, qué hacer si no entiende y cómo termina. `worker/policy.ts` se genera con la configuración: usa `agent.sectorPolicy` para no perder el cambio.
-6. **Atención humana.** El kit no transfiere llamadas: una solicitud queda pendiente en el dashboard. Si el cliente quiere transferir, configúralo y pruébalo con un teléfono real antes de prometerlo.
+4. **Actívalo en ElevenLabs.** Registra la URL y el secreto en los ajustes de Agents, y activa la obtención de datos de inicio para llamadas de Twilio en la pestaña Security del agente.
+5. **Conversación.** Registra cada llamada en `conversations` con `channel` igual a `phone` y el webhook de fin de llamada para los minutos. Sin esto, el dashboard no la muestra.
+6. **Prompt.** Añade reglas de teléfono: aviso de que es un asistente virtual, aviso de grabación si aplica, qué hacer si no entiende y cómo termina. `worker/policy.ts` se genera con la configuración: usa `agent.sectorPolicy` para no perder el cambio.
+7. **Atención humana.** El kit no transfiere llamadas: una solicitud queda pendiente en el dashboard. Si el cliente quiere transferir, configúralo y pruébalo con un teléfono real antes de prometerlo.
 
 Los menús de los proveedores cambian: confirma cada paso en la documentación actual de ElevenLabs sobre integración nativa con Twilio, SIP trunking y datos de inicio de conversación.
 

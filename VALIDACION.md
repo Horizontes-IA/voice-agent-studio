@@ -1,6 +1,8 @@
-# Validación de entrega · v1.3.1 · 6 de noviembre de 2026
+# Validación de entrega · v1.3.2 · 6 de noviembre de 2026
 
-La v1.3.1 solo agrega el instalador de skills, instrucciones para la IA, `npm run check` en la raíz del kit y cambios de texto. No cambia el generador, las plantillas ni el agente. Los resultados de esta página se midieron en la v1.3.0, el 4 de noviembre de 2026.
+Las v1.3.1 y v1.3.2 agregan el instalador de skills, instrucciones para la IA, `npm run check` en la raíz del kit, un reintento en `deploy:guided` y cambios de texto. No cambian las plantillas ni el agente. Salvo lo que sigue, los resultados de esta página se midieron en la v1.3.0, el 4 de noviembre de 2026.
+
+**Prueba del 6 de noviembre, estética con recepción:** instalación limpia desde el repositorio público y despliegue real en Cloudflare y ElevenLabs. Una conversación completa con voz sintética entrando por el micrófono: ElevenLabs transcribió bien las 4 frases y la cita quedó en la agenda, de 14:00 a 15:15 más 15 de preparación. Sigue sin probarse una persona hablando en un micrófono real. Dental y taller no se probaron con este método.
 
 La v1.3.0 agrega doce negocios, ocho skills y tres herramientas. Todo lo nuevo se probó en local. **Nada nuevo se ha probado con voz real de ElevenLabs ni por teléfono.** La versión tiene 21 plantillas: 3 con voz real y 18 sin ella.
 
