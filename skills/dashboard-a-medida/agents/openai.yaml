@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dashboard a medida"
+  short_description: "Añade páginas y métricas al dashboard generado"
+  default_prompt: "Usa $dashboard-a-medida para añadir al dashboard las métricas que pide mi cliente."

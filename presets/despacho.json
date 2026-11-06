@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "kind": "despacho",
+  "slug": "rios-demo",
+  "name": "Ríos Asociados",
+  "city": "Guadalajara",
+  "timezone": "America/Mexico_City",
+  "currency": "MXN",
+  "agent": {
+    "name": "Elisa",
+    "instructions": "Habla en español mexicano con frases breves y tono formal cercano. Haz una pregunta a la vez. Pide solo una descripción breve del tema para elegir el área. No des opiniones legales ni fiscales."
+  },
+  "providers": [
+    {
+      "id": "marta",
+      "name": "Lic. Marta Ríos",
+      "specialty": "legal",
+      "initials": "MR",
+      "color": "#288f77",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "jorge",
+      "name": "Lic. Jorge León",
+      "specialty": "legal",
+      "initials": "JL",
+      "color": "#288f77",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "ines",
+      "name": "C.P. Inés Mora",
+      "specialty": "fiscal",
+      "initials": "IM",
+      "color": "#288f77",
+      "weekdays": "2,4",
+      "start_hour": 14,
+      "end_hour": 19
+    }
+  ],
+  "services": [
+    {
+      "id": "consulta",
+      "name": "Consulta legal inicial",
+      "duration": 30,
+      "buffer": 10,
+      "price": 800,
+      "specialty": "legal",
+      "description": "Primera conversación para entender el caso y explicar opciones."
+    },
+    {
+      "id": "documentos",
+      "name": "Revisión de documentos",
+      "duration": 45,
+      "buffer": 15,
+      "price": 1200,
+      "specialty": "legal",
+      "description": "Revisión de contratos o documentos que traigas a la cita."
+    },
+    {
+      "id": "fiscal",
+      "name": "Consulta fiscal",
+      "duration": 45,
+      "buffer": 10,
+      "price": 1000,
+      "specialty": "fiscal",
+      "description": "Orientación contable y fiscal para personas y empresas."
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Sala 1"
+    },
+    {
+      "id": 2,
+      "name": "Sala 2"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en MXN. Los honorarios de un asunto completo se cotizan después de la consulta. El agente no cobra ni confirma pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Trae identificación y los documentos relacionados con tu asunto. No hace falta que los compartas por voz."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no da asesoría, no interpreta leyes y no calcula impuestos o indemnizaciones. Un plazo legal urgente o una detención queda como solicitud de prioridad alta, sin asegurar una respuesta inmediata."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿La consulta es confidencial? Sí, con el profesional. ¿Atienden en línea? No en esta demostración. ¿Se quedan con mis documentos? Se revisan en la cita."
+    }
+  ]
+}

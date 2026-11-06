@@ -1,0 +1,21 @@
+{
+  "name": "horizontes-voice-agent-studio",
+  "version": "1.3.1",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "devDependencies": {
+    "date-fns": "4.4.0",
+    "date-fns-tz": "3.2.0"
+  },
+  "scripts": {
+    "start": "node tools/start.mjs",
+    "create": "node tools/create-project.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "package": "node tools/package.mjs",
+    "check": "node tools/doctor.mjs",
+    "install-skills": "node tools/install-skills.mjs"
+  }
+}

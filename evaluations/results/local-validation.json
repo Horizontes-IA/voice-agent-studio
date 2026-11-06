@@ -1,0 +1,1129 @@
+{
+  "date": "2026-11-04T19:45:58.744Z",
+  "results": [
+    {
+      "kind": "dental",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply sonrisa-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute sonrisa-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "salon",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply luna-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute luna-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "garage",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply ruta-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute ruta-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute ruta-demo --local --file .secrets/orders-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP garage: authentication, own-order scope, update, stale version",
+          "status": "PASS",
+          "assertions": 6
+        }
+      ]
+    },
+    {
+      "kind": "veterinaria",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply patitas-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute patitas-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "fisioterapia",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply movimiento-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute movimiento-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "inmobiliaria",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply casa-alta-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute casa-alta-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "despacho",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply rios-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute rios-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "barberia",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply navaja-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute navaja-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "academia",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply lingua-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute lingua-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "nutricion",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply raiz-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute raiz-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "psicologia",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply sereno-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute sereno-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "pediatria",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply pasitos-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute pasitos-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "laboratorio",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply cumbre-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute cumbre-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "optica",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply mirador-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute mirador-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "spa",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply bosque-claro-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute bosque-claro-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "gimnasio",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply fuerza-sur-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute fuerza-sur-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "motos",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply dos-ruedas-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute dos-ruedas-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "seguros",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply ancla-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute ancla-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "contabilidad",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply prisma-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute prisma-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "manejo",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply via-clara-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute via-clara-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "eventos",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply jardin-aurora-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute jardin-aurora-demo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        }
+      ]
+    },
+    {
+      "kind": "production",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply sonrisa-demo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP production: anonymous, forged JWT, disabled OTP, unapproved tool, portal",
+          "status": "PASS",
+          "assertions": 5
+        }
+      ]
+    },
+    {
+      "kind": "custom",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply custom-qa --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute custom-qa --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        },
+        {
+          "command": "HTTP custom: Sunday booking, third resource restriction, closure, IANA zone, generated knowledge",
+          "status": "PASS",
+          "assertions": 5
+        }
+      ]
+    },
+    {
+      "kind": "profile-informativo",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply patitas-informativo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "SKIPPED",
+          "reason": "booking tools disabled by profile; covered by HTTP profile checks"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute patitas-informativo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        },
+        {
+          "command": "HTTP profile informativo",
+          "status": "PASS",
+          "profile": "informativo",
+          "checks": [
+            "Las tools que se publican son exactamente las de este tipo de agente",
+            "El servidor rechaza con 403 las tools de otros tipos de agente",
+            "Catálogo y solicitudes al equipo funcionan"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "profile-calificador",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply casa-alta-calificador --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute casa-alta-calificador --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        },
+        {
+          "command": "HTTP profile calificador",
+          "status": "PASS",
+          "profile": "calificador",
+          "checks": [
+            "Las tools que se publican son exactamente las de este tipo de agente",
+            "El servidor rechaza con 403 las tools de otros tipos de agente",
+            "Catálogo y solicitudes al equipo funcionan",
+            "Sin un campo obligatorio responde 400 y no guarda",
+            "Un valor fuera de las opciones o una calificación de 11 responde 400 y no guarda",
+            "Un prospecto puede negarse a contestar una pregunta de opciones",
+            "Repetir en la misma sesión actualiza el registro y no crea otro",
+            "El registro aparece en el dashboard y se marca como revisado; sin sesión responde 401"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "profile-encuesta",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply movimiento-encuesta --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "SKIPPED",
+          "reason": "booking tools disabled by profile; covered by HTTP profile checks"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute movimiento-encuesta --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        },
+        {
+          "command": "HTTP profile encuesta",
+          "status": "PASS",
+          "profile": "encuesta",
+          "checks": [
+            "Las tools que se publican son exactamente las de este tipo de agente",
+            "El servidor rechaza con 403 las tools de otros tipos de agente",
+            "Catálogo y solicitudes al equipo funcionan",
+            "Sin un campo obligatorio responde 400 y no guarda",
+            "Un valor fuera de las opciones o una calificación de 11 responde 400 y no guarda",
+            "Repetir en la misma sesión actualiza el registro y no crea otro",
+            "El registro aparece en el dashboard y se marca como revisado; sin sesión responde 401"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "profile-informativo-laboratorio",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply cumbre-informativo --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "SKIPPED",
+          "reason": "booking tools disabled by profile; covered by HTTP profile checks"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute cumbre-informativo --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        },
+        {
+          "command": "HTTP profile informativo",
+          "status": "PASS",
+          "profile": "informativo",
+          "checks": [
+            "Las tools que se publican son exactamente las de este tipo de agente",
+            "El servidor rechaza con 403 las tools de otros tipos de agente",
+            "Catálogo y solicitudes al equipo funcionan"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "profile-calificador-seguros",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply ancla-calificador --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "PASS",
+          "summary": " Test Files  1 passed (1)       Tests  13 passed (13)"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute ancla-calificador --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        },
+        {
+          "command": "HTTP profile calificador",
+          "status": "PASS",
+          "profile": "calificador",
+          "checks": [
+            "Las tools que se publican son exactamente las de este tipo de agente",
+            "El servidor rechaza con 403 las tools de otros tipos de agente",
+            "Catálogo y solicitudes al equipo funcionan",
+            "Sin un campo obligatorio responde 400 y no guarda",
+            "Un valor fuera de las opciones o una calificación de 11 responde 400 y no guarda",
+            "Un prospecto puede negarse a contestar una pregunta de opciones",
+            "Repetir en la misma sesión actualiza el registro y no crea otro",
+            "El registro aparece en el dashboard y se marca como revisado; sin sesión responde 401"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "profile-encuesta-spa",
+      "checks": [
+        {
+          "command": "npm run build",
+          "status": "PASS"
+        },
+        {
+          "command": "npm run setup",
+          "status": "PASS"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply bosque-claro-encuesta --local",
+          "status": "PASS"
+        },
+        {
+          "command": "npm test",
+          "status": "SKIPPED",
+          "reason": "booking tools disabled by profile; covered by HTTP profile checks"
+        },
+        {
+          "command": "npx playwright test",
+          "status": "PASS",
+          "coverage": "desktop, mobile, navigation, editor, input focus"
+        },
+        {
+          "command": "node node_modules/wrangler/bin/wrangler.js d1 execute bosque-claro-encuesta --local --file .secrets/budget-test.sql",
+          "status": "PASS"
+        },
+        {
+          "command": "HTTP per-session tool budget: third catalog call is denied by server",
+          "status": "PASS",
+          "assertions": 4
+        },
+        {
+          "command": "HTTP profile encuesta",
+          "status": "PASS",
+          "profile": "encuesta",
+          "checks": [
+            "Las tools que se publican son exactamente las de este tipo de agente",
+            "El servidor rechaza con 403 las tools de otros tipos de agente",
+            "Catálogo y solicitudes al equipo funcionan",
+            "Sin un campo obligatorio responde 400 y no guarda",
+            "Un valor fuera de las opciones o una calificación de 11 responde 400 y no guarda",
+            "Repetir en la misma sesión actualiza el registro y no crea otro",
+            "El registro aparece en el dashboard y se marca como revisado; sin sesión responde 401"
+          ]
+        }
+      ]
+    }
+  ],
+  "providers": "simulated-or-not-connected",
+  "liveVoiceTested": false
+}

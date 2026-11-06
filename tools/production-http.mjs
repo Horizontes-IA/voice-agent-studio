@@ -1,0 +1,95 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {args} from './shared.mjs';
+const opts=args(process.argv.slice(2));if(!opts.project)throw new Error('Usa --project /ruta/candidato-production');
+const root=path.resolve(opts.project),config=JSON.parse(fs.readFileSync(path.join(root,'business.config.json'),'utf8'));
+if(config.mode!=='production')throw new Error('Genera una instalación production para esta prueba.');
+const require=createRequire(path.join(root,'package.json')),{Miniflare,convertV4MiniflareOptions}=require('miniflare'),{buildSync}=require('esbuild');
+const output=path.join(root,'.secrets/production-http');fs.mkdirSync(output,{recursive:true,mode:0o700});
+buildSync({entryPoints:[path.join(root,'worker/index.ts')],bundle:true,platform:'node',format:'cjs',outfile:path.join(output,'worker.cjs'),logLevel:'silent'});
+const app=require(path.join(output,'worker.cjs')).default;
+const mf=new Miniflare(convertV4MiniflareOptions({workers:[{name:'qa',modules:true,script:'export default {fetch(){return new Response("qa")}}',compatibilityDate:'2026-10-18',d1Databases:['DB']}]}));
+const db=await mf.getD1Database('DB'),checks=[],providerCalls=[];
+const originalFetch=globalThis.fetch;
+try{
+  for(const file of fs.readdirSync(path.join(root,'migrations')).filter(f=>f.endsWith('.sql')).sort())await db.exec(fs.readFileSync(path.join(root,'migrations',file),'utf8').replace(/--[^\n]*/g,'').replace(/\n/g,' '));
+  const keys=await crypto.subtle.generateKey({name:'RSASSA-PKCS1-v1_5',modulusLength:2048,publicExponent:new Uint8Array([1,0,1]),hash:'SHA-256'},true,['sign','verify']);
+  const jwk={...await crypto.subtle.exportKey('jwk',keys.publicKey),kid:'qa-key'};
+  const token=async email=>{const a=Buffer.from(JSON.stringify({alg:'RS256',kid:'qa-key'})).toString('base64url'),b=Buffer.from(JSON.stringify({iss:'https://studio-qa.cloudflareaccess.com',aud:['qa-audience'],exp:Math.floor(Date.now()/1000)+300,email})).toString('base64url');return a+'.'+b+'.'+Buffer.from(await crypto.subtle.sign('RSASSA-PKCS1-v1_5',keys.privateKey,Buffer.from(a+'.'+b))).toString('base64url');};
+  let customerId='';
+  globalThis.fetch=async(input,init)=>{
+    const url=new URL(typeof input==='string'?input:input.url??String(input));providerCalls.push(url.hostname+url.pathname);
+    if(url.hostname==='studio-qa.cloudflareaccess.com')return Response.json({keys:[jwk]});
+    if(url.hostname==='verify.twilio.com')return Response.json({status:url.pathname.endsWith('VerificationCheck')?(new URLSearchParams(init.body).get('Code')==='123456'?'approved':'pending'):'pending'});
+    if(url.hostname==='api.elevenlabs.io'&&url.pathname.endsWith('get-signed-url'))return Response.json({signed_url:'wss://example.invalid/qa'});
+    if(url.hostname==='api.hubapi.com'){
+      const body=JSON.parse(init.body);
+      if(url.pathname.endsWith('/contacts/search'))return Response.json({total:1,results:[{id:'qa-contact'}]});
+      if(url.pathname.endsWith('/contacts/qa-contact'))return Response.json({id:'qa-contact'});
+      if(url.pathname.endsWith('/tasks')){assert.equal(body.associations[0].to.id,'qa-contact');assert.equal(body.associations[0].types[0].associationTypeId,204);return Response.json({id:'qa-task'});}
+    }
+    throw new Error('Llamada externa inesperada: '+url.hostname+url.pathname);
+  };
+  const env={DB:db,APP_ENV:'production',CLINIC_TIMEZONE:config.timezone,ACCESS_TEAM_DOMAIN:'studio-qa.cloudflareaccess.com',ACCESS_AUD:'qa-audience',STAFF_ROLES_JSON:JSON.stringify({'admin@example.test':'admin','desk@example.test':'reception','viewer@example.test':'viewer'}),BUSINESS_APPROVED:'true',CRM_SYNC_ENABLED:'true',HUBSPOT_PRIVATE_APP_TOKEN:'synthetic-qa',TWILIO_ACCOUNT_SID:'synthetic-qa',TWILIO_AUTH_TOKEN:'synthetic-qa',TWILIO_VERIFY_SERVICE_SID:'synthetic-qa',ELEVENLABS_API_KEY:'synthetic-qa',TOOLS_SECRET:'synthetic-tools',SESSION_SECRET:'s'.repeat(48),ENCRYPTION_KEY:'1'.repeat(64),ASSETS:{fetch:()=>new Response('qa')}};
+  const api=async(route,{method='GET',body,headers={}}={})=>{const response=await app.fetch(new Request('https://qa.example'+route,{method,headers:{'Content-Type':'application/json',...headers},body:body===undefined?undefined:JSON.stringify(body)}),env);return {status:response.status,headers:response.headers,data:await response.json()};};
+  const admin={'Cf-Access-Jwt-Assertion':await token('admin@example.test')},desk={'Cf-Access-Jwt-Assertion':await token('desk@example.test')},viewer={'Cf-Access-Jwt-Assertion':await token('viewer@example.test')};
+  assert.equal((await api('/api/dashboard')).status,401);
+  const dashboard=await api('/api/dashboard',{headers:admin});assert.equal(dashboard.status,200);assert.equal(dashboard.data.patients.length,0);
+  assert.equal((await api('/api/dashboard',{headers:viewer})).status,200);
+  assert.equal((await api('/api/patients',{method:'POST',headers:viewer,body:{name:'QA Customer',phone:'+528100000001'}})).status,403);
+  assert.equal((await api('/api/agent',{method:'PUT',headers:desk,body:{}})).status,403);
+  checks.push('staff JWT positive path, empty production seed, read-only viewer, reception cannot edit agent');
+  const start=await api('/api/portal/start',{method:'POST',body:{phone:'+528100000001',consent:true}});assert.equal(start.status,200);
+  const challenge=start.data.challenge_id;
+  assert.equal((await api('/api/portal/check',{method:'POST',body:{challenge_id:challenge,code:'000000',name:'QA Customer'}})).status,403);
+  const approved=await api('/api/portal/check',{method:'POST',body:{challenge_id:challenge,code:'123456',name:'QA Customer'}});assert.equal(approved.status,200);
+  assert.match(approved.headers.get('set-cookie'),/HttpOnly/i);assert.match(approved.headers.get('set-cookie'),/Secure/i);
+  const customerCookie={cookie:approved.headers.get('set-cookie').split(';')[0]};
+  assert.equal((await api('/api/portal/check',{method:'POST',body:{challenge_id:challenge,code:'123456',name:'QA Customer'}})).status,403);
+  customerId=(await db.prepare('SELECT id FROM patients WHERE phone=?').bind('+528100000001').first()).id;
+  assert.equal((await api('/api/dashboard',{headers:customerCookie})).status,401);
+  checks.push('provider-approved OTP, invalid code denied, one-use challenge, HttpOnly scoped customer, no staff access');
+  const settings=dashboard.data.settings;settings.remote_agent_id='qa-agent';await db.prepare("UPDATE settings SET value=? WHERE key='agent'").bind(JSON.stringify(settings)).run();
+  assert.equal((await api('/api/portal/voice',{method:'POST'})).status,401);
+  const voice=await api('/api/portal/voice',{method:'POST',headers:customerCookie});assert.equal(voice.status,200);
+  assert.equal((await api('/api/portal/voice',{method:'POST',headers:customerCookie})).status,409);
+  const tools={'X-Tools-Key':env.TOOLS_SECRET,'X-Session-Token':voice.data.dynamic_variables.session_token};
+  const identity=await api('/api/tools/get_verification_status',{method:'POST',headers:tools,body:{}});assert.equal(identity.status,200);assert.equal(identity.data.data.verified,true);assert.equal(identity.data.data.method,'verified_phone');
+  assert.equal((await api('/api/tools/get_my_appointments',{method:'POST',headers:tools,body:{patient_id:'someone-else'}})).data.data.appointments.length,0);
+  checks.push('customer voice session, active-session duplicate denied, verified tools scoped to owner');
+  let selected;
+  const service=config.services[0],professional=config.providers.find(p=>p.specialty===service.specialty);
+  for(let offset=25;offset<50&&!selected;offset++){
+    const date=new Date();date.setUTCDate(date.getUTCDate()+offset);
+    const result=await api('/api/tools/search_availability',{method:'POST',headers:tools,body:{service_id:service.id,provider_id:professional.id,date:date.toISOString().slice(0,10)}});
+    selected=result.data.data.slots?.[0];
+  }
+  assert.ok(selected);
+  const prepared=await api('/api/tools/prepare_appointment_change',{method:'POST',headers:tools,body:{action:'create',slot_id:selected.slot_id,patient_id:'another-owner'}});assert.equal(prepared.status,200);
+  assert.equal((await db.prepare('SELECT COUNT(*) n FROM appointments').first()).n,0);
+  const booked=await api('/api/tools/commit_appointment_change',{method:'POST',headers:tools,body:{}});assert.equal(booked.status,200);assert.equal(booked.data.data.status,'booked');
+  const booking=await db.prepare('SELECT * FROM appointments WHERE id=?').bind(booked.data.data.appointment_id).first();assert.equal(booking.patient_id,customerId);
+  const next=await api('/api/tools/search_availability',{method:'POST',headers:tools,body:{service_id:service.id,provider_id:professional.id,date:booking.starts_at.slice(0,10),appointment_id:booking.id}});
+  const different=next.data.data.slots.find(s=>s.slot_id!==selected.slot_id);assert.ok(different);
+  assert.equal((await api('/api/tools/prepare_appointment_change',{method:'POST',headers:tools,body:{action:'move',appointment_id:booking.id,slot_id:different.slot_id}})).status,200);
+  assert.equal((await api('/api/tools/commit_appointment_change',{method:'POST',headers:tools,body:{}})).data.data.status,'booked');
+  assert.equal((await db.prepare('SELECT COUNT(*) n FROM appointments').first()).n,1);
+  assert.equal((await api('/api/tools/prepare_appointment_change',{method:'POST',headers:tools,body:{action:'cancel',appointment_id:booking.id}})).status,200);
+  assert.equal((await api('/api/tools/commit_appointment_change',{method:'POST',headers:tools,body:{}})).data.data.status,'cancelled');
+  checks.push('verified production tools create, move and cancel the same owner appointment; preparation alone does not commit');
+  const staff=await api('/api/tools/create_staff_request',{method:'POST',headers:tools,body:{category:'humano',reason:'QA: necesito seguimiento de recepción.',priority:'normal'}});assert.equal(staff.status,200);
+  assert.equal((await api('/api/production/crm/run',{method:'POST',headers:admin,body:{}})).status,200);
+  const jobs=await db.prepare('SELECT state FROM integration_outbox').all();assert.ok(jobs.results.length);assert.ok(jobs.results.every(j=>j.state==='done'));
+  assert.equal((await db.prepare("SELECT external_id FROM external_links WHERE kind='contact' AND entity_id=?").bind(customerId).first()).external_id,'qa-contact');
+  const tasks=providerCalls.filter(p=>p.endsWith('/tasks')).length;
+  await api('/api/production/crm/run',{method:'POST',headers:admin,body:{}});assert.equal(providerCalls.filter(p=>p.endsWith('/tasks')).length,tasks);
+  assert.ok((await db.prepare('SELECT COUNT(*) n FROM staff_audit').first()).n>0);
+  checks.push('voice request → durable outbox → existing CRM contact and linked task, repeat drain no duplicate, audit');
+  await api('/api/portal/logout',{method:'POST',headers:customerCookie,body:{}});
+  assert.equal((await api('/api/portal/voice',{method:'POST',headers:customerCookie})).status,401);
+  checks.push('customer logout revokes session');
+  fs.writeFileSync(path.join(output,'result.json'),JSON.stringify({date:new Date().toISOString(),status:'PASS',database:'real local SQLite via Miniflare D1',providers:'all external providers mocked; no live provider acceptance',checks},null,2),{mode:0o600});
+  console.log(JSON.stringify({status:'PASS',checks,liveProvidersTested:false},null,2));
+}finally{globalThis.fetch=originalFetch;await mf.dispose();}

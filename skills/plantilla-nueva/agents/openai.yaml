@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plantilla nueva"
+  short_description: "Agente para un negocio que aún no tiene plantilla"
+  default_prompt: "Usa $plantilla-nueva para crear un agente de voz para un negocio sin plantilla."

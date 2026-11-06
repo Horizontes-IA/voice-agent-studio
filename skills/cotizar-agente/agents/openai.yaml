@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cotizar agente"
+  short_description: "Implementación, mensualidad y costo por minuto"
+  default_prompt: "Usa $cotizar-agente para cotizar un agente de voz para mi cliente."

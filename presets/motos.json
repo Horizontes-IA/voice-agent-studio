@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "kind": "motos",
+  "slug": "dos-ruedas-demo",
+  "name": "Taller Dos Ruedas",
+  "city": "Medellín",
+  "timezone": "America/Bogota",
+  "currency": "COP",
+  "agent": {
+    "name": "Mateo",
+    "instructions": "Habla en español colombiano, cercano y breve. Haz una pregunta a la vez. Pregunta marca, modelo y qué notó en la moto. No diagnostiques fallas por teléfono ni prometas repuestos o tiempos de entrega."
+  },
+  "providers": [
+    {
+      "id": "sergio",
+      "name": "Sergio Cano",
+      "specialty": "mecanica",
+      "initials": "SC",
+      "color": "#b7791f",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 8,
+      "end_hour": 18
+    },
+    {
+      "id": "yeison",
+      "name": "Yeison Mejía",
+      "specialty": "mecanica",
+      "initials": "YM",
+      "color": "#78716c",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 9,
+      "end_hour": 18
+    },
+    {
+      "id": "natalia",
+      "name": "Natalia Gil",
+      "specialty": "electronica",
+      "initials": "NG",
+      "color": "#92400e",
+      "weekdays": "1,3,5",
+      "start_hour": 9,
+      "end_hour": 18
+    }
+  ],
+  "services": [
+    {
+      "id": "revision",
+      "name": "Revisión general",
+      "duration": 45,
+      "buffer": 15,
+      "price": 60000,
+      "specialty": "mecanica",
+      "description": "Revisión de frenos, cadena, llantas y luces; el mecánico entrega el resultado."
+    },
+    {
+      "id": "mantenimiento",
+      "name": "Mantenimiento preventivo",
+      "duration": 120,
+      "buffer": 15,
+      "price": 180000,
+      "specialty": "mecanica",
+      "description": "Cambio de aceite y ajustes de rutina. Los repuestos se cotizan aparte."
+    },
+    {
+      "id": "electronica",
+      "name": "Diagnóstico de inyección y electricidad",
+      "duration": 60,
+      "buffer": 15,
+      "price": 90000,
+      "specialty": "electronica",
+      "description": "Revisión de fallas eléctricas o de inyección con la especialista."
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Bahía 1"
+    },
+    {
+      "id": 2,
+      "name": "Bahía 2"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en COP. Los repuestos se cotizan aparte y el mecánico presenta el presupuesto antes de hacer el trabajo. El agente no cobra, no acepta presupuestos y no confirma pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Trae la moto con los papeles al día y llega 10 minutos antes. Avísale al mecánico qué ruidos o fallas notaste. La cita agenda la llegada de la moto; el trabajo puede tomar más tiempo."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no diagnostica fallas ni autoriza reparaciones. Si fallan los frenos o la dirección, o hay fuga de combustible, debe recomendar no circular con la moto y ofrecer una solicitud con prioridad alta. Si hubo un accidente con heridos, debe pedir llamar a emergencias. El estado de una moto que ya está en el taller lo confirma el equipo."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Mi moto ya está lista? El agente no tiene esa información: registra una solicitud. ¿Recogen la moto a domicilio? No en esta demo. ¿Trabajan motos eléctricas? Registra una solicitud para confirmarlo."
+    }
+  ]
+}

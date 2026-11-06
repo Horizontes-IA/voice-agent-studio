@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "kind": "laboratorio",
+  "slug": "cumbre-demo",
+  "name": "Laboratorio Cumbre",
+  "city": "Quito",
+  "timezone": "America/Guayaquil",
+  "currency": "USD",
+  "openingHours": {
+    "0": [],
+    "1": [
+      [
+        "07:00",
+        "16:00"
+      ]
+    ],
+    "2": [
+      [
+        "07:00",
+        "16:00"
+      ]
+    ],
+    "3": [
+      [
+        "07:00",
+        "16:00"
+      ]
+    ],
+    "4": [
+      [
+        "07:00",
+        "16:00"
+      ]
+    ],
+    "5": [
+      [
+        "07:00",
+        "16:00"
+      ]
+    ],
+    "6": [
+      [
+        "07:00",
+        "12:00"
+      ]
+    ]
+  },
+  "agent": {
+    "name": "Paula",
+    "instructions": "Habla en español neutro con frases breves y tono claro. Haz una pregunta a la vez. Pregunta qué estudio le pidieron. No interpretes resultados ni digas si un valor es normal."
+  },
+  "providers": [
+    {
+      "id": "daniela",
+      "name": "Téc. Daniela Paredes",
+      "specialty": "toma",
+      "initials": "DP",
+      "color": "#b7791f",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 7,
+      "end_hour": 16
+    },
+    {
+      "id": "marco",
+      "name": "Téc. Marco Andrade",
+      "specialty": "toma",
+      "initials": "MA",
+      "color": "#78716c",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 7,
+      "end_hour": 16
+    },
+    {
+      "id": "rosa",
+      "name": "Lic. Rosa Cevallos",
+      "specialty": "especial",
+      "initials": "RC",
+      "color": "#92400e",
+      "weekdays": "2,4",
+      "start_hour": 7,
+      "end_hour": 12
+    }
+  ],
+  "services": [
+    {
+      "id": "toma",
+      "name": "Toma de muestra de sangre",
+      "duration": 15,
+      "buffer": 5,
+      "price": 8,
+      "specialty": "toma",
+      "description": "Toma de muestra para los estudios que indique la orden.",
+      "resource_ids": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "pediatrica",
+      "name": "Toma de muestra pediátrica",
+      "duration": 20,
+      "buffer": 10,
+      "price": 10,
+      "specialty": "toma",
+      "description": "Toma de muestra para menores, con su madre, padre o tutor.",
+      "resource_ids": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "curva",
+      "name": "Curva de tolerancia a la glucosa",
+      "duration": 150,
+      "buffer": 15,
+      "price": 35,
+      "specialty": "especial",
+      "description": "Estudio de varias tomas; la persona permanece en el laboratorio durante todo el tiempo.",
+      "resource_ids": [
+        3
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Cubículo 1"
+    },
+    {
+      "id": 2,
+      "name": "Cubículo 2"
+    },
+    {
+      "id": 3,
+      "name": "Sala de curvas"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en USD. Corresponden a la toma; cada estudio se cobra aparte según la orden. El agente no cobra ni confirma pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Trae tu orden y un documento de identidad. Ayuno de 8 horas para glucosa y perfil de lípidos, salvo otra indicación de tu médico. Para la curva de tolerancia a la glucosa, ayuno de 8 horas y permanece aquí durante todo el estudio. Para otros estudios, confirma la preparación con el equipo."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no interpreta resultados ni los lee por voz, no diagnostica y no indica suspender medicamentos. Los resultados se entregan por el canal oficial del laboratorio. Ante dolor de pecho, dificultad para respirar, desmayo o sangrado que no se detiene debe indicar que se acuda de inmediato a urgencias. Las dudas de preparación que no estén aquí quedan como solicitud."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Necesito orden médica? Para la toma, sí en esta demo. ¿Cuándo salen mis resultados? Depende del estudio: registra una solicitud para que el equipo lo confirme. ¿Me pueden leer mis resultados? No por voz. ¿Toman muestras a domicilio? No en esta demo."
+    }
+  ]
+}

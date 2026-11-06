@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "kind": "optica",
+  "slug": "mirador-demo",
+  "name": "Óptica Mirador",
+  "city": "Santiago",
+  "timezone": "America/Santiago",
+  "currency": "CLP",
+  "agent": {
+    "name": "Javiera",
+    "instructions": "Habla en español neutro con frases breves y trato amable. Haz una pregunta a la vez. Pregunta si necesita examen, lentes de contacto o retirar y ajustar sus lentes. No hables de graduación ni recomiendes gotas."
+  },
+  "providers": [
+    {
+      "id": "ignacio",
+      "name": "Opt. Ignacio Fuentes",
+      "specialty": "optometria",
+      "initials": "IF",
+      "color": "#b7791f",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "carolina",
+      "name": "Opt. Carolina Rojas",
+      "specialty": "optometria",
+      "initials": "CR",
+      "color": "#78716c",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "tamara",
+      "name": "Tamara Soto",
+      "specialty": "asesoria",
+      "initials": "TS",
+      "color": "#92400e",
+      "weekdays": "1,2,3,4,5,6",
+      "start_hour": 9,
+      "end_hour": 19
+    }
+  ],
+  "services": [
+    {
+      "id": "examen",
+      "name": "Examen de la vista",
+      "duration": 30,
+      "buffer": 10,
+      "price": 15000,
+      "specialty": "optometria",
+      "description": "Examen con optometrista para definir tu graduación.",
+      "resource_ids": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "contacto",
+      "name": "Adaptación de lentes de contacto",
+      "duration": 45,
+      "buffer": 15,
+      "price": 25000,
+      "specialty": "optometria",
+      "description": "Prueba y adaptación con optometrista.",
+      "resource_ids": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "ajuste",
+      "name": "Entrega y ajuste de lentes",
+      "duration": 15,
+      "buffer": 5,
+      "price": 0,
+      "specialty": "asesoria",
+      "description": "Entrega de lentes listos y ajuste del armazón.",
+      "resource_ids": [
+        3
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Sala de examen 1"
+    },
+    {
+      "id": 2,
+      "name": "Sala de examen 2"
+    },
+    {
+      "id": 3,
+      "name": "Módulo de ajuste"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en CLP. El precio de armazones y cristales depende de la graduación y se informa en tienda. El agente no cobra ni confirma pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Si usas lentes, tráelos al examen. Si usas lentes de contacto, sigue la indicación que te dé el equipo antes de la cita. Trae tu receta anterior si la tienes."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no diagnostica, no dice qué graduación necesita alguien ni recomienda gotas o medicamentos. Ante dolor fuerte en el ojo, pérdida repentina de visión, un golpe o un químico en el ojo debe indicar que se acuda de inmediato a una urgencia oftalmológica o a la urgencia más cercana. Las fechas de entrega las confirma el equipo."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Cuánto tardan mis lentes? Depende del pedido: registra una solicitud para que el equipo lo confirme. ¿Puedo hacerme lentes sin examen? Con una receta vigente, el equipo lo revisa en tienda. ¿Aceptan convenios? Registra una solicitud para confirmarlo."
+    }
+  ]
+}

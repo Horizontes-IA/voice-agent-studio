@@ -1,0 +1,4 @@
+interface:
+  display_name: "Voice Agent Studio"
+  short_description: "Adapta agentes de voz a negocios y prepara su demo"
+  default_prompt: "Usa $voice-agent-studio para adaptar el kit a mi negocio y preparar una demo comprobable."

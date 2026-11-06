@@ -1,0 +1,4 @@
+interface:
+  display_name: "Analizar llamadas"
+  short_description: "Reporte mensual del agente, sin datos personales"
+  default_prompt: "Usa $analizar-llamadas para preparar el reporte de este mes para mi cliente."

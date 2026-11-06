@@ -1,0 +1,31 @@
+import { PROFILE } from "./profile";
+export function parseCapture(input: Record<string, unknown>) {
+  const form = PROFILE.capture;
+  if (!form) return { error: "CAPTURE_DISABLED" } as const;
+  const answers: Record<string, string | number> = {};
+  let score: number | null = null;
+  for (const field of form.fields) {
+    const raw = input[field.id];
+    if (raw === undefined || raw === null || String(raw).trim() === "") {
+      if (field.required) return { error: "CAPTURE_INCOMPLETE" } as const;
+      continue;
+    }
+    const value = String(raw).trim();
+    // Un prospecto puede negarse a contestar. Una encuesta incompleta no se guarda.
+    if (form.kind === "lead" && value === "no_respondio") {
+      answers[field.id] = value;
+      continue;
+    }
+    if (field.type === "score") {
+      if (!/^\d{1,2}$/.test(value) || Number(value) > 10) return { error: "CAPTURE_INVALID" } as const;
+      score = Number(value);
+      answers[field.id] = score;
+    } else {
+      if (value.length > 500 || (field.type === "choice" && !field.options?.includes(value))) return { error: "CAPTURE_INVALID" } as const;
+      answers[field.id] = value;
+    }
+  }
+  const summary = typeof input.summary === "string" ? input.summary.trim() : "";
+  if (summary.length < 3 || summary.length > 500) return { error: "CAPTURE_INCOMPLETE" } as const;
+  return { kind: form.kind, answers, score, summary } as const;
+}

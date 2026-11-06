@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agente de encuesta"
+  short_description: "Recoge opiniones por voz y avisa de las quejas"
+  default_prompt: "Usa $agente-encuesta para crear una encuesta de satisfacción por voz para mi negocio."

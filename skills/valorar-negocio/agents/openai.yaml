@@ -1,0 +1,4 @@
+interface:
+  display_name: "Valorar negocio"
+  short_description: "Llamadas perdidas y ROI con cifras del dueño"
+  default_prompt: "Usa $valorar-negocio para calcular si un agente de voz le conviene a este negocio."

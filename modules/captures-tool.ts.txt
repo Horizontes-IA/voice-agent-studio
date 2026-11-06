@@ -1,0 +1,14 @@
+  else if (name === "save_capture") {
+    if (!session.verified) throw new BusinessError("AUTH_REQUIRED", 403);
+    const p = parseCapture(input);
+    if (p.error) throw new BusinessError(p.error, 400);
+    const id = crypto.randomUUID();
+    // Un reintento de la misma conversación actualiza su registro en vez de duplicarlo.
+    const saved = await db
+      .prepare(
+        "INSERT INTO captures(id,kind,session_id,patient_id,answers,summary,score) VALUES(?,?,?,?,?,?,?) ON CONFLICT(session_id) DO UPDATE SET answers=excluded.answers,summary=excluded.summary,score=excluded.score,status='new',updated_at=datetime('now') RETURNING id",
+      )
+      .bind(id, p.kind, session.id, session.patient_id, JSON.stringify(p.answers), p.summary, p.score)
+      .first<{ id: string }>();
+    result = { capture_id: saved?.id ?? id, status: "saved" };
+  }

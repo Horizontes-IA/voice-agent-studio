@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "kind": "pediatria",
+  "slug": "pasitos-demo",
+  "name": "Pasitos Pediatría",
+  "city": "Arequipa",
+  "timezone": "America/Lima",
+  "currency": "PEN",
+  "agent": {
+    "name": "Rosa",
+    "instructions": "Habla en español neutro con frases breves y trato cálido. Haz una pregunta a la vez. Pregunta el nombre y la edad del niño o la niña. No des indicaciones médicas ni digas si un síntoma es grave."
+  },
+  "providers": [
+    {
+      "id": "milagros",
+      "name": "Dra. Milagros Quispe",
+      "specialty": "general",
+      "initials": "MQ",
+      "color": "#b7791f",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "renzo",
+      "name": "Dr. Renzo Salas",
+      "specialty": "general",
+      "initials": "RS",
+      "color": "#78716c",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "patricia",
+      "name": "Lic. Patricia Vera",
+      "specialty": "lactancia",
+      "initials": "PV",
+      "color": "#92400e",
+      "weekdays": "2,4",
+      "start_hour": 14,
+      "end_hour": 19
+    }
+  ],
+  "services": [
+    {
+      "id": "control",
+      "name": "Control de niño sano",
+      "duration": 30,
+      "buffer": 10,
+      "price": 90,
+      "specialty": "general",
+      "description": "Revisión de crecimiento y desarrollo."
+    },
+    {
+      "id": "enfermedad",
+      "name": "Consulta por enfermedad",
+      "duration": 30,
+      "buffer": 10,
+      "price": 100,
+      "specialty": "general",
+      "description": "Consulta cuando el niño o la niña se siente mal y no es una urgencia."
+    },
+    {
+      "id": "lactancia",
+      "name": "Asesoría de lactancia",
+      "duration": 45,
+      "buffer": 10,
+      "price": 120,
+      "specialty": "lactancia",
+      "description": "Acompañamiento de lactancia con la especialista."
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Consultorio 1"
+    },
+    {
+      "id": 2,
+      "name": "Consultorio 2"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en PEN. Vacunas, medicamentos y estudios se informan aparte. El agente no cobra ni confirma pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Trae el carné de vacunación y de crecimiento. El paciente menor de edad viene con su madre, padre o tutor. Llega 10 minutos antes."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no diagnostica ni indica medicamentos, dosis o remedios. Ante dificultad para respirar, convulsiones, fiebre en un bebé menor de tres meses, golpe fuerte en la cabeza, desmayo, intoxicación o decaimiento marcado debe indicar que se acuda de inmediato a urgencias. Las dudas de vacunas o medicamentos quedan como solicitud para el equipo."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Atienden urgencias? Este consultorio solo atiende con cita. ¿Vacunan aquí? El equipo lo confirma en consulta; registra una solicitud. ¿Puede venir un familiar? Debe venir la madre, el padre o el tutor, o alguien autorizado por ellos."
+    }
+  ]
+}

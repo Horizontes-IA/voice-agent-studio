@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "kind": "nutricion",
+  "slug": "raiz-demo",
+  "name": "Raíz Nutrición",
+  "city": "Guadalajara",
+  "timezone": "America/Mexico_City",
+  "currency": "MXN",
+  "agent": {
+    "name": "Mara",
+    "instructions": "Habla en español mexicano con frases breves y trato cálido, sin juzgar. Haz una pregunta a la vez. Pregunta si es primera vez o seguimiento. No hables de peso ideal, dietas ni suplementos."
+  },
+  "providers": [
+    {
+      "id": "paola",
+      "name": "Lic. Paola Medrano",
+      "specialty": "general",
+      "initials": "PM",
+      "color": "#b7791f",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "oscar",
+      "name": "Lic. Óscar Luna",
+      "specialty": "general",
+      "initials": "ÓL",
+      "color": "#78716c",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "fernanda",
+      "name": "Lic. Fernanda Ibarra",
+      "specialty": "deportiva",
+      "initials": "FI",
+      "color": "#92400e",
+      "weekdays": "2,4",
+      "start_hour": 14,
+      "end_hour": 19
+    }
+  ],
+  "services": [
+    {
+      "id": "primera",
+      "name": "Primera consulta nutricional",
+      "duration": 60,
+      "buffer": 10,
+      "price": 750,
+      "specialty": "general",
+      "description": "Historia de hábitos y objetivos con la nutrióloga."
+    },
+    {
+      "id": "seguimiento",
+      "name": "Consulta de seguimiento",
+      "duration": 30,
+      "buffer": 10,
+      "price": 450,
+      "specialty": "general",
+      "description": "Revisión de avances con quien ya tuvo su primera consulta."
+    },
+    {
+      "id": "deportiva",
+      "name": "Valoración de nutrición deportiva",
+      "duration": 45,
+      "buffer": 10,
+      "price": 900,
+      "specialty": "deportiva",
+      "description": "Valoración para personas que entrenan de forma regular."
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Consultorio 1"
+    },
+    {
+      "id": 2,
+      "name": "Consultorio 2"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en MXN. Estudios de laboratorio y suplementos no están incluidos. El agente no cobra ni confirma pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Llega 10 minutos antes. Si tienes estudios recientes, tráelos a la consulta. No hace falta ayuno salvo que el equipo te lo haya indicado."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no diagnostica ni indica dietas, calorías, ayunos ni suplementos. Ante desmayo, dolor de pecho o dificultad para respirar debe indicar que se busque atención médica de inmediato. Si alguien menciona que deja de comer a propósito o se provoca el vómito, recomienda hablar con un profesional de salud y registra una solicitud con prioridad alta."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Atienden en línea? Esta demo solo agenda consultas presenciales; registra una solicitud para confirmarlo con el equipo. ¿Dan el plan por teléfono? No: el plan se define en consulta. ¿Atienden a menores? Sí, acompañados de su madre, padre o tutor."
+    }
+  ]
+}

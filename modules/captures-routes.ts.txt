@@ -1,0 +1,7 @@
+app.get('/api/captures',async c=>c.json({captures:(await c.env.DB.prepare('SELECT k.id,k.answers,k.summary,k.score,k.status,k.updated_at,p.name customer_name FROM captures k JOIN patients p ON p.id=k.patient_id ORDER BY k.updated_at DESC,k.id').all<{answers:string}>()).results.map(r=>({...r,answers:JSON.parse(r.answers)}))}));
+app.post('/api/captures/:id/review',async c=>{
+  const result=await c.env.DB.prepare("UPDATE captures SET status='reviewed',updated_at=datetime('now') WHERE id=?").bind(c.req.param('id')).run();
+  if(!result.meta.changes)throw new BusinessError('CAPTURE_NOT_FOUND',404);
+  await activity(c.env.DB,'capture','Registro revisado','Revisado desde el dashboard.','staff');
+  return c.json({ok:true});
+});

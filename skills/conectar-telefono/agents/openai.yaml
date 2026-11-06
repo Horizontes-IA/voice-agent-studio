@@ -1,0 +1,4 @@
+interface:
+  display_name: "Conectar teléfono"
+  short_description: "Plan para Twilio o SIP. Requiere desarrollo y pruebas"
+  default_prompt: "Usa $conectar-telefono para planear cómo conectar mi agente a un número de teléfono."

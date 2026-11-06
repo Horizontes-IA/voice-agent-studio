@@ -1,0 +1,4 @@
+interface:
+  display_name: "Entrega al cliente"
+  short_description: "Pruebas con evidencia y traspaso del proyecto"
+  default_prompt: "Usa $entrega-cliente para preparar la aceptación y entrega de este proyecto."

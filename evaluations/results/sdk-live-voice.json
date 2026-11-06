@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-18T21:46:45.300Z",
+  "provider": "ElevenLabs Agents real SDK, audio output and tools on isolated HTTPS Workers",
+  "asrTested": false,
+  "results": [
+    {
+      "kind": "dental",
+      "date": "2026-10-18T21:36:26.627Z",
+      "status": "PASS",
+      "input": "typed messages over the real ElevenLabs voice session; fake microphone",
+      "audioFrames": 26,
+      "asrTested": false,
+      "checks": [
+        {
+          "name": "create-after-confirmation",
+          "status": "PASS",
+          "service": "valoracion",
+          "duration": 30,
+          "buffer": 10
+        },
+        {
+          "name": "move-same-appointment-after-confirmation",
+          "status": "PASS"
+        },
+        {
+          "name": "cancel-after-confirmation",
+          "status": "PASS"
+        }
+      ],
+      "browserErrors": []
+    },
+    {
+      "kind": "salon",
+      "date": "2026-10-18T21:37:10.273Z",
+      "status": "PASS",
+      "input": "typed messages over the real ElevenLabs voice session; fake microphone",
+      "audioFrames": 18,
+      "asrTested": false,
+      "checks": [
+        {
+          "name": "create-after-confirmation",
+          "status": "PASS",
+          "service": "ritual",
+          "duration": 75,
+          "buffer": 15
+        },
+        {
+          "name": "cancel-after-confirmation",
+          "status": "PASS"
+        }
+      ],
+      "browserErrors": []
+    },
+    {
+      "kind": "garage",
+      "date": "2026-10-18T21:38:45.771Z",
+      "status": "PASS",
+      "input": "typed messages over the real ElevenLabs voice session; fake microphone",
+      "audioFrames": 26,
+      "asrTested": false,
+      "checks": [
+        {
+          "name": "create-after-confirmation",
+          "status": "PASS",
+          "service": "recepcion",
+          "duration": 30,
+          "buffer": 10
+        },
+        {
+          "name": "cancel-after-confirmation",
+          "status": "PASS"
+        },
+        {
+          "name": "own-work-order-read",
+          "status": "PASS"
+        }
+      ],
+      "browserErrors": []
+    }
+  ]
+}

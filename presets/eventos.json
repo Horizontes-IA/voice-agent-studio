@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 1,
+  "kind": "eventos",
+  "slug": "jardin-aurora-demo",
+  "name": "Jardín Aurora",
+  "city": "Santo Domingo",
+  "timezone": "America/Santo_Domingo",
+  "currency": "DOP",
+  "openingHours": {
+    "0": [
+      [
+        "10:00",
+        "14:00"
+      ]
+    ],
+    "1": [],
+    "2": [
+      [
+        "10:00",
+        "19:00"
+      ]
+    ],
+    "3": [
+      [
+        "10:00",
+        "19:00"
+      ]
+    ],
+    "4": [
+      [
+        "10:00",
+        "19:00"
+      ]
+    ],
+    "5": [
+      [
+        "10:00",
+        "19:00"
+      ]
+    ],
+    "6": [
+      [
+        "10:00",
+        "19:00"
+      ]
+    ]
+  },
+  "agent": {
+    "name": "Yolanda",
+    "instructions": "Habla en español neutro con frases breves y trato entusiasta, sin exagerar. Haz una pregunta a la vez. Pregunta tipo de evento, fecha aproximada y número de invitados. Agendar una visita no aparta la fecha del evento.",
+    "capture": {
+      "lead": {
+        "title": "Prospectos",
+        "fields": [
+          {
+            "id": "tipo",
+            "label": "Tipo de evento",
+            "type": "text",
+            "required": true
+          },
+          {
+            "id": "fecha_evento",
+            "label": "Fecha aproximada del evento",
+            "type": "text",
+            "required": true
+          },
+          {
+            "id": "invitados",
+            "label": "Número aproximado de invitados",
+            "type": "text",
+            "required": true
+          },
+          {
+            "id": "presupuesto",
+            "label": "Presupuesto aproximado",
+            "type": "text",
+            "required": false
+          },
+          {
+            "id": "temperatura",
+            "label": "Interés",
+            "type": "choice",
+            "options": [
+              "caliente",
+              "tibio",
+              "frio"
+            ],
+            "required": true
+          }
+        ],
+        "samples": [
+          {
+            "summary": "Boda en marzo; quiere conocer el salón esta semana.",
+            "answers": {
+              "tipo": "Boda",
+              "fecha_evento": "Marzo",
+              "invitados": "120",
+              "presupuesto": "Ya tiene un presupuesto definido",
+              "temperatura": "caliente"
+            }
+          },
+          {
+            "summary": "Cumpleaños sin fecha cerrada; compara opciones.",
+            "answers": {
+              "tipo": "Cumpleaños",
+              "fecha_evento": "A mediados de año",
+              "invitados": "60",
+              "temperatura": "tibio"
+            }
+          },
+          {
+            "summary": "Solo preguntó cuánto cuesta y prefirió no agendar.",
+            "answers": {
+              "tipo": "Todavía no lo decide",
+              "fecha_evento": "Sin fecha",
+              "invitados": "No lo sabe",
+              "temperatura": "frio"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "providers": [
+    {
+      "id": "carolina",
+      "name": "Carolina Peña",
+      "specialty": "coordinacion",
+      "initials": "CP",
+      "color": "#b7791f",
+      "weekdays": "0,2,3,4,5,6",
+      "start_hour": 10,
+      "end_hour": 19
+    },
+    {
+      "id": "marisol",
+      "name": "Marisol Reyes",
+      "specialty": "coordinacion",
+      "initials": "MR",
+      "color": "#78716c",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 10,
+      "end_hour": 19
+    },
+    {
+      "id": "ramon",
+      "name": "Chef Ramón Tavárez",
+      "specialty": "banquetes",
+      "initials": "RT",
+      "color": "#92400e",
+      "weekdays": "3,5,6",
+      "start_hour": 10,
+      "end_hour": 19
+    }
+  ],
+  "services": [
+    {
+      "id": "visita",
+      "name": "Visita al salón",
+      "duration": 60,
+      "buffer": 30,
+      "price": 0,
+      "specialty": "coordinacion",
+      "description": "Recorrido por el salón y el jardín con una coordinadora.",
+      "resource_ids": [
+        2
+      ]
+    },
+    {
+      "id": "junta",
+      "name": "Junta de planeación",
+      "duration": 45,
+      "buffer": 15,
+      "price": 0,
+      "specialty": "coordinacion",
+      "description": "Reunión para revisar un evento con su coordinadora.",
+      "resource_ids": [
+        1
+      ]
+    },
+    {
+      "id": "degustacion",
+      "name": "Degustación de menú",
+      "duration": 90,
+      "buffer": 30,
+      "price": 2500,
+      "specialty": "banquetes",
+      "description": "Prueba de menú con el chef. El costo se informa antes de confirmar.",
+      "resource_ids": [
+        3
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Sala de juntas"
+    },
+    {
+      "id": 2,
+      "name": "Salón Aurora"
+    },
+    {
+      "id": 3,
+      "name": "Cocina de degustación"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en DOP. Los paquetes dependen de fecha, invitados y menú, y la coordinadora los presenta por escrito. El agente no cotiza, no aparta fechas, no recibe anticipos y no confirma pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Ven con una idea de fecha, número de invitados y presupuesto. La visita dura una hora. Agendar una visita no aparta la fecha de tu evento."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no confirma si una fecha de evento está libre, no aparta fechas, no cotiza paquetes y no recibe anticipos. La capacidad del salón y lo que incluye cada paquete los confirma la coordinadora. Quejas de un evento ya contratado quedan como solicitud con prioridad alta."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Está libre el 20 de diciembre? La coordinadora lo confirma por escrito: agenda una visita o registra una solicitud. ¿Puedo apartar por teléfono? No. ¿Traigo mi propio banquete? Lo revisa la coordinadora. ¿Reservan mesas de restaurante? No: este negocio solo atiende eventos."
+    }
+  ]
+}

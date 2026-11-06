@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-04T19:45:58.744Z",
+  "status": "PASS",
+  "database": "real local SQLite via Miniflare D1",
+  "providers": "all external providers mocked; no live provider acceptance",
+  "checks": [
+    "staff JWT positive path, empty production seed, read-only viewer, reception cannot edit agent",
+    "provider-approved OTP, invalid code denied, one-use challenge, HttpOnly scoped customer, no staff access",
+    "customer voice session, active-session duplicate denied, verified tools scoped to owner",
+    "verified production tools create, move and cancel the same owner appointment; preparation alone does not commit",
+    "voice request → durable outbox → existing CRM contact and linked task, repeat drain no duplicate, audit",
+    "customer logout revokes session"
+  ]
+}

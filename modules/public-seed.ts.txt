@@ -1,0 +1,36 @@
+export async function seed(db: D1Database) {
+  if ((await db.prepare('SELECT COUNT(*) n FROM providers').first<{n:number}>())?.n) return;
+  const statements: D1PreparedStatement[] = [];
+  for (const p of business.providers) statements.push(db.prepare('INSERT INTO providers(id,name,specialty,initials,color,weekdays,start_hour,end_hour) VALUES(?,?,?,?,?,?,?,?)').bind(p.id,p.name,p.specialty,p.initials,p.color,p.weekdays,p.start_hour,p.end_hour));
+  for (const s of business.services) statements.push(db.prepare('INSERT INTO services(id,name,duration,buffer,price,description,specialty) VALUES(?,?,?,?,?,?,?)').bind(s.id,s.name,s.duration,s.buffer,s.price,s.description,s.specialty));
+  const names = ['Mariana García','Carlos Hernández','Valeria López','Diego Martínez','Sofía Rodríguez','Andrés Pérez','Camila González','Sebastián Ramírez','Regina Torres','Emiliano Flores','Ximena Sánchez','Mateo Rivera','Lucía Gómez','Daniel Ortiz','Renata Cruz','Santiago Reyes','Ana Morales','Pablo Mendoza','Isabella Castro','Alejandro Vargas'];
+  names.forEach((name,i) => statements.push(db.prepare('INSERT INTO patients(id,name,phone,email,initials) VALUES(?,?,?,?,?)').bind('patient-'+(i+1),name,'+52810000'+String(i+1).padStart(4,'0'),'demo'+(i+1)+'@example.com',name.split(' ').map(n=>n[0]).join(''))));
+  for (const d of kbSeeds) {
+    statements.push(db.prepare('INSERT INTO knowledge_documents(id,title,category,content) VALUES(?,?,?,?)').bind(d.id,d.title,d.category,d.content));
+    statements.push(db.prepare('INSERT INTO knowledge_revisions(id,document_id,version,content) VALUES(?,?,1,?)').bind(crypto.randomUUID(),d.id,d.content));
+  }
+  statements.push(db.prepare("INSERT INTO settings(key,value) VALUES('agent',?)").bind(JSON.stringify(defaultAgent)));
+  let n=0;
+  for (let offset=0;offset<14;offset++) {
+    const date=new Date(today()+'T12:00:00Z'); date.setUTCDate(date.getUTCDate()+offset);
+    const dow=date.getUTCDay(), localDate=date.toISOString().slice(0,10);
+    const eligible=business.providers.filter(p=>p.weekdays.split(',').map(Number).includes(dow));
+    for(let index=0;index<4 && eligible.length;index++) {
+      const p=eligible[index%eligible.length];
+      const services=business.services.filter(s=>s.specialty===p.specialty);
+      const s=services[index%services.length];
+      // Two appointments per provider, spaced far enough for the longest supported service.
+      const hour=p.start_hour+Math.floor(index/eligible.length)*5;
+      if(hour*60+s.duration+s.buffer>Math.min(dow===6?14:19,p.end_hour)*60) continue;
+      const start=fromZonedTime(localDate+'T'+String(hour).padStart(2,'0')+':00:00',ZONE);
+      if(start.getTime()<Date.now()) continue;
+      const end=new Date(start.getTime()+s.duration*60000), occupied=new Date(end.getTime()+s.buffer*60000);
+      // At most two resources can be occupied; choose a distinct time for the third professional.
+      if(index%eligible.length>=2) continue;
+      statements.push(db.prepare('INSERT INTO appointments(id,patient_id,provider_id,service_id,chair,starts_at,ends_at,occupied_until,status,source) VALUES(?,?,?,?,?,?,?,?,?,?)').bind('seed-appointment-'+n,'patient-'+((n%20)+1),p.id,s.id,(index%2)+1,start.toISOString(),end.toISOString(),occupied.toISOString(),n%3===0?'confirmed':'booked','demo'));
+      n++;
+    }
+  }
+  statements.push(db.prepare('INSERT INTO activities(id,type,title,detail,source) VALUES(?,?,?,?,?)').bind(crypto.randomUUID(),'system','Tu demo está lista','Se cargaron 20 personas ficticias y servicios configurados.','demo'));
+  await db.batch(statements);
+}

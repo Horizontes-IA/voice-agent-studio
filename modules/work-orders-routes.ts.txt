@@ -1,0 +1,15 @@
+app.get('/api/work-orders', async c => c.json({orders:(await c.env.DB.prepare('SELECT w.*,p.name customer_name FROM work_orders w JOIN patients p ON p.id=w.patient_id ORDER BY w.updated_at DESC,w.id').all()).results}));
+app.post('/api/work-orders',async c=>{
+  const p=z.object({patient_id:z.string().min(1).max(100),vehicle:z.string().min(3).max(120),public_note:z.string().min(3).max(500)}).parse(await c.req.json());
+  if(!await c.env.DB.prepare('SELECT id FROM patients WHERE id=?').bind(p.patient_id).first())throw new BusinessError('CUSTOMER_NOT_FOUND',404);
+  const id='OT-'+crypto.randomUUID();
+  await c.env.DB.prepare("INSERT INTO work_orders(id,patient_id,vehicle,status,public_note) VALUES(?,?,?,'received',?)").bind(id,p.patient_id,p.vehicle,p.public_note).run();
+  await activity(c.env.DB,'order','Orden registrada',id,'staff');return c.json({id});
+});
+app.post('/api/work-orders/:id', async c => {
+  const p=z.object({status:z.enum(['received','inspection','awaiting_approval','in_progress','ready','delivered']),public_note:z.string().min(3).max(500),version:z.number().int().positive()}).parse(await c.req.json());
+  const result=await c.env.DB.prepare('UPDATE work_orders SET status=?,public_note=?,version=version+1,updated_at=datetime(\'now\') WHERE id=? AND version=?').bind(p.status,p.public_note,c.req.param('id'),p.version).run();
+  if(!result.meta.changes) throw new BusinessError('ORDER_CHANGED_OR_NOT_FOUND',409);
+  await activity(c.env.DB,'order','Orden actualizada',c.req.param('id')+' · '+p.status,'staff');
+  return c.json({ok:true});
+});

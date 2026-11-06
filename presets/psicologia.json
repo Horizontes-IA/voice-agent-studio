@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "kind": "psicologia",
+  "slug": "sereno-demo",
+  "name": "Centro Sereno",
+  "city": "Bogotá",
+  "timezone": "America/Bogota",
+  "currency": "COP",
+  "agent": {
+    "name": "Inés",
+    "instructions": "Habla en español neutro, de usted, con calma y frases breves. Haz una pregunta a la vez. Pregunta solo lo necesario para elegir el servicio: si es para un adulto o un menor, y si es primera vez. No preguntes el motivo de consulta."
+  },
+  "providers": [
+    {
+      "id": "andrea",
+      "name": "Psic. Andrea Rincón",
+      "specialty": "adultos",
+      "initials": "AR",
+      "color": "#b7791f",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "julian",
+      "name": "Psic. Julián Mora",
+      "specialty": "adultos",
+      "initials": "JM",
+      "color": "#78716c",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "camila",
+      "name": "Psic. Camila Duarte",
+      "specialty": "infantil",
+      "initials": "CD",
+      "color": "#92400e",
+      "weekdays": "3,5",
+      "start_hour": 14,
+      "end_hour": 19
+    }
+  ],
+  "services": [
+    {
+      "id": "primera",
+      "name": "Primera sesión",
+      "duration": 50,
+      "buffer": 10,
+      "price": 160000,
+      "specialty": "adultos",
+      "description": "Primera sesión de psicología para adultos."
+    },
+    {
+      "id": "seguimiento",
+      "name": "Sesión de seguimiento",
+      "duration": 50,
+      "buffer": 10,
+      "price": 140000,
+      "specialty": "adultos",
+      "description": "Sesión para quien ya está en proceso con su psicólogo."
+    },
+    {
+      "id": "infantil",
+      "name": "Valoración infantil con tutor",
+      "duration": 50,
+      "buffer": 10,
+      "price": 170000,
+      "specialty": "infantil",
+      "description": "Primera sesión para menores, con su madre, padre o tutor."
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Consultorio 1"
+    },
+    {
+      "id": 2,
+      "name": "Consultorio 2"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en COP. El agente no cobra, no confirma pagos y no resuelve reembolsos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Llega 10 minutos antes. Las sesiones duran 50 minutos. Un menor siempre viene con su madre, padre o tutor en la primera sesión."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente es administrativo: no da terapia, no diagnostica y no habla de medicamentos. Si alguien menciona que quiere hacerse daño, quitarse la vida o que alguien corre peligro, debe pedirle que llame de inmediato a la línea de emergencias de su país o vaya a la urgencia más cercana, y registrar una solicitud con prioridad alta. Línea de crisis: sin configurar en esta demo; el agente no debe inventar ningún número."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Puedo saber quién me atiende antes? Sí, según la disponibilidad que muestre la agenda. ¿Atienden parejas? No en esta demo: registra una solicitud. ¿Lo que cuento es confidencial? El agente no pide ni guarda detalles de lo que vive la persona; los detalles se hablan con el psicólogo."
+    }
+  ]
+}

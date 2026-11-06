@@ -1,0 +1,4 @@
+interface:
+  display_name: "Propuesta al cliente"
+  short_description: "Propuesta de piloto con alcance, inversión y aceptación"
+  default_prompt: "Usa $propuesta-cliente para preparar la propuesta del piloto de mi cliente."

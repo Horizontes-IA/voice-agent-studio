@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "kind": "manejo",
+  "slug": "via-clara-demo",
+  "name": "Escuela Vía Clara",
+  "city": "Ciudad de Guatemala",
+  "timezone": "America/Guatemala",
+  "currency": "GTQ",
+  "openingHours": {
+    "0": [],
+    "1": [
+      [
+        "07:00",
+        "19:00"
+      ]
+    ],
+    "2": [
+      [
+        "07:00",
+        "19:00"
+      ]
+    ],
+    "3": [
+      [
+        "07:00",
+        "19:00"
+      ]
+    ],
+    "4": [
+      [
+        "07:00",
+        "19:00"
+      ]
+    ],
+    "5": [
+      [
+        "07:00",
+        "19:00"
+      ]
+    ],
+    "6": [
+      [
+        "08:00",
+        "14:00"
+      ]
+    ]
+  },
+  "agent": {
+    "name": "Lidia",
+    "instructions": "Habla en español neutro con frases breves y tono tranquilo. Haz una pregunta a la vez. Pregunta si ya sabe manejar algo y si prefiere auto estándar o automático. No garantices aprobar el examen ni obtener la licencia.",
+    "capture": {
+      "lead": {
+        "title": "Interesados",
+        "fields": [
+          {
+            "id": "experiencia",
+            "label": "Si ya sabe manejar",
+            "type": "choice",
+            "options": [
+              "nada",
+              "algo",
+              "con_licencia"
+            ],
+            "required": true
+          },
+          {
+            "id": "transmision",
+            "label": "Tipo de auto",
+            "type": "choice",
+            "options": [
+              "estandar",
+              "automatico",
+              "no_sabe"
+            ],
+            "required": true
+          },
+          {
+            "id": "plazo",
+            "label": "Para cuándo lo necesita",
+            "type": "text",
+            "required": true
+          },
+          {
+            "id": "horario",
+            "label": "Horario que prefiere",
+            "type": "text",
+            "required": false
+          },
+          {
+            "id": "temperatura",
+            "label": "Interés",
+            "type": "choice",
+            "options": [
+              "caliente",
+              "tibio",
+              "frio"
+            ],
+            "required": true
+          }
+        ],
+        "samples": [
+          {
+            "summary": "Necesita aprender este mes y agendó su clase de evaluación.",
+            "answers": {
+              "experiencia": "nada",
+              "transmision": "automatico",
+              "plazo": "Este mes",
+              "horario": "Por la mañana",
+              "temperatura": "caliente"
+            }
+          },
+          {
+            "summary": "Sabe lo básico y aún compara escuelas.",
+            "answers": {
+              "experiencia": "algo",
+              "transmision": "estandar",
+              "plazo": "En dos meses",
+              "temperatura": "tibio"
+            }
+          },
+          {
+            "summary": "Solo preguntó precios y prefirió no agendar.",
+            "answers": {
+              "experiencia": "nada",
+              "transmision": "no_sabe",
+              "plazo": "Sin fecha",
+              "temperatura": "frio"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "providers": [
+    {
+      "id": "oscar",
+      "name": "Óscar Morales",
+      "specialty": "instructor",
+      "initials": "ÓM",
+      "color": "#b7791f",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 7,
+      "end_hour": 19
+    },
+    {
+      "id": "beatriz",
+      "name": "Beatriz Castillo",
+      "specialty": "instructor",
+      "initials": "BC",
+      "color": "#78716c",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 8,
+      "end_hour": 19
+    },
+    {
+      "id": "brenda",
+      "name": "Brenda Pérez",
+      "specialty": "inscripciones",
+      "initials": "BP",
+      "color": "#92400e",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 9,
+      "end_hour": 17
+    }
+  ],
+  "services": [
+    {
+      "id": "evaluacion",
+      "name": "Clase de evaluación",
+      "duration": 60,
+      "buffer": 15,
+      "price": 150,
+      "specialty": "instructor",
+      "description": "Primera clase: el instructor revisa qué tanto sabe el alumno.",
+      "resource_ids": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "estandar",
+      "name": "Clase práctica en auto estándar",
+      "duration": 60,
+      "buffer": 15,
+      "price": 130,
+      "specialty": "instructor",
+      "description": "Clase individual en auto de transmisión estándar.",
+      "resource_ids": [
+        1
+      ]
+    },
+    {
+      "id": "automatico",
+      "name": "Clase práctica en auto automático",
+      "duration": 60,
+      "buffer": 15,
+      "price": 130,
+      "specialty": "instructor",
+      "description": "Clase individual en auto de transmisión automática.",
+      "resource_ids": [
+        2
+      ]
+    },
+    {
+      "id": "inscripcion",
+      "name": "Asesoría de inscripción",
+      "duration": 20,
+      "buffer": 10,
+      "price": 0,
+      "specialty": "inscripciones",
+      "description": "Charla para conocer paquetes de clases y requisitos.",
+      "resource_ids": [
+        3
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Auto estándar"
+    },
+    {
+      "id": 2,
+      "name": "Auto automático"
+    },
+    {
+      "id": 3,
+      "name": "Oficina"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en GTQ. Los paquetes de clases los informa la oficina. El agente no inscribe, no cobra y no confirma pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Trae tu documento de identidad y zapatos cerrados. Llega 10 minutos antes. Los requisitos de la licencia los define la autoridad de tránsito: confírmalos con la oficina."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no garantiza aprobar el examen ni obtener la licencia, no gestiona trámites y no da consejos sobre multas. Solo el instructor decide cuántas clases hacen falta. Si quien llama es menor de edad, un padre, madre o tutor debe confirmar la cita con el equipo."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Cuántas clases necesito? Lo define el instructor después de la clase de evaluación. ¿Me acompañan al examen? Registra una solicitud para confirmarlo. ¿Tienen autos automáticos? Sí, hay una clase específica en el catálogo."
+    }
+  ]
+}

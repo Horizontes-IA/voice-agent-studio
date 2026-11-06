@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "kind": "garage",
+  "slug": "ruta-demo",
+  "name": "Ruta Motor",
+  "city": "Monterrey",
+  "timezone": "America/Monterrey",
+  "agent": {
+    "name": "Alex",
+    "instructions": "Habla en español mexicano con frases breves. Haz una pregunta a la vez. Para una orden existente verifica la sesión y llama get_my_work_orders. Lee solo public_note, status y promised_at si existe. Nunca anuncies entrega sin estado ready ni inventes un diagnóstico."
+  },
+  "providers": [
+    {
+      "id": "omar",
+      "name": "Omar Castillo",
+      "specialty": "general",
+      "initials": "OC",
+      "color": "#288f77",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "vale",
+      "name": "Valeria Ruiz",
+      "specialty": "general",
+      "initials": "VR",
+      "color": "#288f77",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "ivan",
+      "name": "Iván Díaz",
+      "specialty": "diagnostico",
+      "initials": "ID",
+      "color": "#288f77",
+      "weekdays": "2,4",
+      "start_hour": 14,
+      "end_hour": 19
+    }
+  ],
+  "services": [
+    {
+      "id": "recepcion",
+      "name": "Recepción de vehículo",
+      "duration": 30,
+      "buffer": 10,
+      "price": 0,
+      "specialty": "general",
+      "description": "Ingreso y recopilación del motivo; no implica reparación autorizada."
+    },
+    {
+      "id": "revision",
+      "name": "Inspección inicial",
+      "duration": 45,
+      "buffer": 10,
+      "price": 450,
+      "specialty": "general",
+      "description": "Revisión inicial; presupuesto y reparación requieren autorización independiente."
+    },
+    {
+      "id": "diagnostico",
+      "name": "Recepción para diagnóstico",
+      "duration": 45,
+      "buffer": 10,
+      "price": 600,
+      "specialty": "diagnostico",
+      "description": "Solicitud de diagnóstico técnico, sin determinar averías por voz."
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "# Ruta Motor\nNegocio ficticio en Monterrey, México. Todos los negocios, personas, precios y órdenes son ficticios. No inventes dirección, contacto, disponibilidad, pagos realizados ni mensajes enviados. La identidad se elige en el panel para la demo; no equivale a verificación real.\nHorario general: lunes a viernes 09:00–19:00 y sábado 09:00–14:00; domingo cerrado. La agenda del sistema determina la disponibilidad exacta."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "- Recepción de vehículo: Ingreso y recopilación del motivo; no implica reparación autorizada.\n- Inspección inicial: Revisión inicial; presupuesto y reparación requieren autorización independiente.\n- Recepción para diagnóstico: Solicitud de diagnóstico técnico, sin determinar averías por voz.\nConsulta get_service_catalog para precios, duración y especialidad; los precios de demostración son MXN."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Negocio",
+      "content": "Omar Castillo: especialidad general; días de semana numéricos 1,2,3,4,5 (domingo=0), de 9 a 19.\nValeria Ruiz: especialidad general; días de semana numéricos 2,3,4,5,6 (domingo=0), de 9 a 19.\nIván Díaz: especialidad diagnostico; días de semana numéricos 2,4 (domingo=0), de 14 a 19.\nNo deduzcas disponibilidad a partir de horarios: usa search_availability."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Toda reserva requiere resumen y aceptación explícita antes de commit. Cambios y cancelaciones automáticos hasta 24 horas antes; después, solicita revisión de recepción. Llegar 10 minutos antes. Dos puestos compartidos. No hay cobros ni penalizaciones automáticas."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Administración",
+      "content": "Consulta siempre el catálogo. No inventes promociones, seguros, descuentos ni presupuestos finales. No pidas tarjetas. Cualquier cambio de presupuesto se revisa con una persona."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Clientes",
+      "content": "Para una orden existente verifica la sesión y llama get_my_work_orders. Lee solo public_note, status y promised_at si existe. Nunca anuncies entrega sin estado ready ni inventes un diagnóstico."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "No diagnostiques averías ni autorices reparaciones o presupuestos por voz. El asistente consulta estados, registra solicitudes y agenda recepciones. No confirma reparaciones terminadas si el sistema no lo indica. No modifica órdenes de otros clientes.\ncreate_staff_request registra una solicitud pendiente. No realiza transferencia de voz ni garantiza respuesta inmediata. Para menores, terceros o problemas de identidad, solicita revisión de una persona."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "Clientes",
+      "content": "¿Mi auto está listo? Consulta get_my_work_orders para la sesión. ¿Cuánto costará reparar? Recepción debe validar el presupuesto. ¿Puedo dejarlo mañana? Consulta disponibilidad para recepción de vehículo."
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "kind": "academia",
+  "slug": "lingua-demo",
+  "name": "Lingua Viva",
+  "city": "Lima",
+  "timezone": "America/Lima",
+  "currency": "PEN",
+  "agent": {
+    "name": "Sara",
+    "instructions": "Habla en español neutro con frases breves y tono animado. Haz una pregunta a la vez. Pregunta qué idioma quiere aprender y para qué. Solo el examen determina el nivel. No garantices certificaciones ni plazos.",
+    "capture": {
+      "lead": {
+        "title": "Interesados",
+        "fields": [
+          {
+            "id": "idioma",
+            "label": "Idioma que quiere aprender",
+            "type": "text",
+            "required": true
+          },
+          {
+            "id": "objetivo",
+            "label": "Para qué lo quiere aprender",
+            "type": "text",
+            "required": true
+          },
+          {
+            "id": "horario",
+            "label": "Horario que prefiere",
+            "type": "text",
+            "required": false
+          },
+          {
+            "id": "plazo",
+            "label": "Cuándo quiere empezar",
+            "type": "text",
+            "required": true
+          },
+          {
+            "id": "temperatura",
+            "label": "Interés",
+            "type": "choice",
+            "options": [
+              "caliente",
+              "tibio",
+              "frio"
+            ],
+            "required": true
+          }
+        ],
+        "samples": [
+          {
+            "summary": "Necesita inglés para un trabajo y agendó su examen de nivel.",
+            "answers": {
+              "idioma": "Inglés",
+              "objetivo": "Un ascenso en su trabajo",
+              "horario": "Lunes y miércoles por la tarde",
+              "plazo": "El próximo mes",
+              "temperatura": "caliente"
+            }
+          },
+          {
+            "summary": "Le interesa, pero quiere probar una clase antes de decidir.",
+            "answers": {
+              "idioma": "Portugués",
+              "objetivo": "Un viaje a Brasil",
+              "horario": "Sábados",
+              "plazo": "En dos meses",
+              "temperatura": "tibio"
+            }
+          },
+          {
+            "summary": "Solo quería saber los costos.",
+            "answers": {
+              "idioma": "Francés",
+              "objetivo": "Interés personal",
+              "plazo": "Sin fecha",
+              "temperatura": "frio"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "providers": [
+    {
+      "id": "sofia",
+      "name": "Sofía Quispe",
+      "specialty": "asesoria",
+      "initials": "SQ",
+      "color": "#288f77",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "mateo",
+      "name": "Mateo Flores",
+      "specialty": "asesoria",
+      "initials": "MF",
+      "color": "#288f77",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "ana",
+      "name": "Ana Rojas",
+      "specialty": "evaluacion",
+      "initials": "AR",
+      "color": "#288f77",
+      "weekdays": "2,4",
+      "start_hour": 14,
+      "end_hour": 19
+    }
+  ],
+  "services": [
+    {
+      "id": "asesoria",
+      "name": "Asesoría de inscripción",
+      "duration": 20,
+      "buffer": 10,
+      "price": 0,
+      "specialty": "asesoria",
+      "description": "Conversación sobre cursos, horarios y costos."
+    },
+    {
+      "id": "muestra",
+      "name": "Clase muestra",
+      "duration": 45,
+      "buffer": 15,
+      "price": 0,
+      "specialty": "asesoria",
+      "description": "Una clase de prueba sin compromiso."
+    },
+    {
+      "id": "examen",
+      "name": "Examen de nivel",
+      "duration": 30,
+      "buffer": 10,
+      "price": 40,
+      "specialty": "evaluacion",
+      "description": "Evaluación para ubicarte en el grupo correcto."
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Aula 1"
+    },
+    {
+      "id": 2,
+      "name": "Aula 2"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en PEN. La mensualidad de ejemplo es de 320 PEN. El agente no inscribe, no cobra y no confirma pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Cursos de ejemplo: inglés, portugués y francés. Grupos de lunes a viernes por la tarde y sábados por la mañana. Llega 10 minutos antes."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no asigna niveles ni garantiza certificaciones. La inscripción y los pagos se hacen con el equipo. Si agenda un menor de edad, un padre o tutor confirma la cita mediante una solicitud."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Puedo probar antes de pagar? Sí, con la clase muestra. ¿Ya sé algo de inglés, en qué nivel entro? Lo define el examen. ¿Dan certificado? Lo confirma el equipo en la asesoría."
+    }
+  ]
+}

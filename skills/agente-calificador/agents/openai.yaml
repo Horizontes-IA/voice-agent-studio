@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agente calificador"
+  short_description: "Califica prospectos por voz y puede agendarles"
+  default_prompt: "Usa $agente-calificador para crear un agente de voz que filtre a los interesados de mi negocio."

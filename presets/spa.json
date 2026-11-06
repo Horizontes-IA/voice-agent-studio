@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "kind": "spa",
+  "slug": "bosque-claro-demo",
+  "name": "Bosque Claro Spa",
+  "city": "San José",
+  "timezone": "America/Costa_Rica",
+  "currency": "CRC",
+  "openingHours": {
+    "0": [
+      [
+        "10:00",
+        "19:00"
+      ]
+    ],
+    "1": [
+      [
+        "10:00",
+        "19:00"
+      ]
+    ],
+    "2": [
+      [
+        "10:00",
+        "19:00"
+      ]
+    ],
+    "3": [
+      [
+        "10:00",
+        "19:00"
+      ]
+    ],
+    "4": [
+      [
+        "10:00",
+        "19:00"
+      ]
+    ],
+    "5": [
+      [
+        "10:00",
+        "19:00"
+      ]
+    ],
+    "6": [
+      [
+        "10:00",
+        "19:00"
+      ]
+    ]
+  },
+  "agent": {
+    "name": "Marina",
+    "instructions": "Habla en español neutro con voz tranquila y frases breves. Haz una pregunta a la vez. Pregunta si prefiere masaje o facial. No prometas resultados y no indiques productos ni tratamientos."
+  },
+  "providers": [
+    {
+      "id": "andres",
+      "name": "Andrés Solano",
+      "specialty": "masajes",
+      "initials": "AS",
+      "color": "#b7791f",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 10,
+      "end_hour": 19
+    },
+    {
+      "id": "paula",
+      "name": "Paula Arias",
+      "specialty": "masajes",
+      "initials": "PA",
+      "color": "#78716c",
+      "weekdays": "0,3,4,5,6",
+      "start_hour": 10,
+      "end_hour": 19
+    },
+    {
+      "id": "karla",
+      "name": "Karla Vargas",
+      "specialty": "faciales",
+      "initials": "KV",
+      "color": "#92400e",
+      "weekdays": "0,2,4,6",
+      "start_hour": 10,
+      "end_hour": 19
+    }
+  ],
+  "services": [
+    {
+      "id": "relajante",
+      "name": "Masaje relajante",
+      "duration": 60,
+      "buffer": 15,
+      "price": 38000,
+      "specialty": "masajes",
+      "description": "Masaje de cuerpo completo de 60 minutos."
+    },
+    {
+      "id": "descontracturante",
+      "name": "Masaje descontracturante",
+      "duration": 60,
+      "buffer": 15,
+      "price": 42000,
+      "specialty": "masajes",
+      "description": "Masaje de presión firme en espalda, cuello y hombros."
+    },
+    {
+      "id": "facial",
+      "name": "Facial hidratante",
+      "duration": 50,
+      "buffer": 10,
+      "price": 35000,
+      "specialty": "faciales",
+      "description": "Limpieza e hidratación de la piel del rostro."
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Cabina 1"
+    },
+    {
+      "id": 2,
+      "name": "Cabina 2"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en CRC. Los paquetes y promociones los confirma el equipo. El agente no cobra ni confirma pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Llega 15 minutos antes para el cuestionario de bienestar. Si tienes embarazo, una lesión o una cirugía reciente, avísalo antes de agendar. Trae ropa cómoda."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no da indicaciones de salud ni promete resultados. Con embarazo, lesión o cirugía reciente no reserva: registra una solicitud para que el equipo lo revise y sugiere consultarlo con su médico. Ante un malestar fuerte debe indicar que se busque atención médica. Los masajes en pareja y los circuitos los coordina el equipo."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Tienen masaje en pareja? Necesita dos terapeutas a la vez: registra una solicitud para coordinarlo. ¿Venden tarjetas de regalo? Registra una solicitud. ¿Atienden a menores? Solo acompañados de su madre, padre o tutor y con confirmación del equipo."
+    }
+  ]
+}

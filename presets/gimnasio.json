@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "kind": "gimnasio",
+  "slug": "fuerza-sur-demo",
+  "name": "Fuerza Sur",
+  "city": "Buenos Aires",
+  "timezone": "America/Argentina/Buenos_Aires",
+  "currency": "ARS",
+  "openingHours": {
+    "0": [],
+    "1": [
+      [
+        "07:00",
+        "22:00"
+      ]
+    ],
+    "2": [
+      [
+        "07:00",
+        "22:00"
+      ]
+    ],
+    "3": [
+      [
+        "07:00",
+        "22:00"
+      ]
+    ],
+    "4": [
+      [
+        "07:00",
+        "22:00"
+      ]
+    ],
+    "5": [
+      [
+        "07:00",
+        "22:00"
+      ]
+    ],
+    "6": [
+      [
+        "09:00",
+        "18:00"
+      ]
+    ]
+  },
+  "agent": {
+    "name": "Nico",
+    "instructions": "Hablá en español rioplatense, con voseo, frases breves y buena onda. Hacé una pregunta a la vez. Preguntá si ya es socio o quiere conocer el gimnasio. No armes rutinas ni prometas resultados.",
+    "capture": {
+      "lead": {
+        "title": "Interesados",
+        "fields": [
+          {
+            "id": "objetivo",
+            "label": "Qué quiere lograr",
+            "type": "text",
+            "required": true
+          },
+          {
+            "id": "experiencia",
+            "label": "Si ya entrena",
+            "type": "choice",
+            "options": [
+              "nunca",
+              "antes_si",
+              "hoy_si"
+            ],
+            "required": true
+          },
+          {
+            "id": "horario",
+            "label": "Horario que prefiere",
+            "type": "text",
+            "required": false
+          },
+          {
+            "id": "plazo",
+            "label": "Cuándo quiere empezar",
+            "type": "text",
+            "required": true
+          },
+          {
+            "id": "temperatura",
+            "label": "Interés",
+            "type": "choice",
+            "options": [
+              "caliente",
+              "tibio",
+              "frio"
+            ],
+            "required": true
+          }
+        ],
+        "samples": [
+          {
+            "summary": "Quiere empezar esta semana y agendó la valoración.",
+            "answers": {
+              "objetivo": "Ganar fuerza",
+              "experiencia": "antes_si",
+              "horario": "Después de las 19",
+              "plazo": "Esta semana",
+              "temperatura": "caliente"
+            }
+          },
+          {
+            "summary": "Le interesa, pero todavía compara gimnasios.",
+            "answers": {
+              "objetivo": "Mejorar su estado físico",
+              "experiencia": "nunca",
+              "plazo": "El mes que viene",
+              "temperatura": "tibio"
+            }
+          },
+          {
+            "summary": "Solo preguntó precios y prefirió no agendar.",
+            "answers": {
+              "objetivo": "Todavía no lo decide",
+              "experiencia": "hoy_si",
+              "plazo": "Sin fecha",
+              "temperatura": "frio"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "providers": [
+    {
+      "id": "lucas",
+      "name": "Lucas Romero",
+      "specialty": "entrenamiento",
+      "initials": "LR",
+      "color": "#b7791f",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 7,
+      "end_hour": 22
+    },
+    {
+      "id": "micaela",
+      "name": "Micaela Paz",
+      "specialty": "entrenamiento",
+      "initials": "MP",
+      "color": "#78716c",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 9,
+      "end_hour": 22
+    },
+    {
+      "id": "agustina",
+      "name": "Agustina Ferrer",
+      "specialty": "membresias",
+      "initials": "AF",
+      "color": "#92400e",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 10,
+      "end_hour": 20
+    }
+  ],
+  "services": [
+    {
+      "id": "valoracion",
+      "name": "Valoración física inicial",
+      "duration": 45,
+      "buffer": 15,
+      "price": 15000,
+      "specialty": "entrenamiento",
+      "description": "Primera medición y charla de objetivos con un entrenador.",
+      "resource_ids": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "personal",
+      "name": "Entrenamiento personal",
+      "duration": 60,
+      "buffer": 10,
+      "price": 22000,
+      "specialty": "entrenamiento",
+      "description": "Sesión individual con un entrenador.",
+      "resource_ids": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "membresia",
+      "name": "Asesoría de membresía",
+      "duration": 20,
+      "buffer": 10,
+      "price": 0,
+      "specialty": "membresias",
+      "description": "Charla para conocer planes y el gimnasio.",
+      "resource_ids": [
+        3
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Zona funcional"
+    },
+    {
+      "id": 2,
+      "name": "Zona de pesas"
+    },
+    {
+      "id": 3,
+      "name": "Mesa de socios"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en ARS. Los planes y promociones los informa la mesa de socios. El agente no cobra, no vende planes y no confirma pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Traé ropa cómoda, toalla y agua. Llegá 10 minutos antes. Si tenés una lesión o una condición de salud, consultá a tu médico antes de entrenar y avisale al entrenador."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no arma rutinas, no indica dietas ni suplementos y no dice si una lesión permite entrenar. Ante dolor de pecho, mareo fuerte o falta de aire debe indicar que se deje de entrenar y se busque atención médica de inmediato. Altas, bajas, congelamientos y cobros quedan como solicitud para la mesa de socios."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Puedo reservar una clase grupal? Las clases grupales tienen cupo y no se reservan por aquí: registra una solicitud. ¿Tienen clase de prueba? La valoración física inicial es el primer paso. ¿Cómo doy de baja mi membresía? Registra una solicitud para la mesa de socios."
+    }
+  ]
+}

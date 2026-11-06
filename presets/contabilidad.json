@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "kind": "contabilidad",
+  "slug": "prisma-demo",
+  "name": "Prisma Contadores",
+  "city": "Ciudad de México",
+  "timezone": "America/Mexico_City",
+  "currency": "MXN",
+  "agent": {
+    "name": "Tomás",
+    "instructions": "Habla en español mexicano con frases breves y tono profesional. Haz una pregunta a la vez. Pregunta si es persona física o empresa y qué tema necesita revisar. No calcules impuestos y no pidas contraseñas."
+  },
+  "providers": [
+    {
+      "id": "laura",
+      "name": "C.P. Laura Ibáñez",
+      "specialty": "fiscal",
+      "initials": "LI",
+      "color": "#b7791f",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 9,
+      "end_hour": 18
+    },
+    {
+      "id": "hector",
+      "name": "C.P. Héctor Salgado",
+      "specialty": "fiscal",
+      "initials": "HS",
+      "color": "#78716c",
+      "weekdays": "2,3,4,5",
+      "start_hour": 10,
+      "end_hour": 19
+    },
+    {
+      "id": "ana",
+      "name": "Lic. Ana Rubio",
+      "specialty": "nomina",
+      "initials": "AR",
+      "color": "#92400e",
+      "weekdays": "1,3,5",
+      "start_hour": 9,
+      "end_hour": 18
+    }
+  ],
+  "services": [
+    {
+      "id": "fiscal",
+      "name": "Consulta fiscal",
+      "duration": 45,
+      "buffer": 15,
+      "price": 900,
+      "specialty": "fiscal",
+      "description": "Revisión de una duda fiscal con un contador."
+    },
+    {
+      "id": "contable",
+      "name": "Diagnóstico contable",
+      "duration": 60,
+      "buffer": 15,
+      "price": 1200,
+      "specialty": "fiscal",
+      "description": "Revisión de cómo lleva hoy su contabilidad un negocio."
+    },
+    {
+      "id": "nomina",
+      "name": "Consulta de nómina",
+      "duration": 45,
+      "buffer": 15,
+      "price": 900,
+      "specialty": "nomina",
+      "description": "Revisión de una duda de nómina con la especialista."
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Sala 1"
+    },
+    {
+      "id": 2,
+      "name": "Sala 2"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en MXN. Los honorarios mensuales se cotizan después del diagnóstico. El agente no cobra ni confirma pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Trae tu última declaración y una lista de tus dudas. No envíes contraseñas ni claves por ningún medio: el contador te dirá cómo compartir la información de forma segura."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no calcula impuestos, no interpreta leyes y no dice si una multa procede. No pide ni recibe contraseñas, e.firma ni claves del portal fiscal. Si alguien menciona una fecha límite o un requerimiento de la autoridad, registra una solicitud con prioridad alta y aclara que quedó pendiente."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Cuánto voy a pagar de impuestos? Eso lo revisa el contador en la consulta. ¿Llevan contabilidad de negocios pequeños? Sí, se define después del diagnóstico. ¿Pueden presentar mi declaración hoy? Registra una solicitud: el equipo confirma si es posible."
+    }
+  ]
+}

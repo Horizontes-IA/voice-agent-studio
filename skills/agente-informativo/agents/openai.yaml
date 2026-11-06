@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agente informativo"
+  short_description: "Responde dudas por voz y deja solicitudes, sin agenda"
+  default_prompt: "Usa $agente-informativo para crear un agente de voz que responda las preguntas de mi negocio."

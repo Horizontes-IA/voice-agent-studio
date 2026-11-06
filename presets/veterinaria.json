@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "kind": "veterinaria",
+  "slug": "patitas-demo",
+  "name": "Patitas Norte",
+  "city": "Bogotá",
+  "timezone": "America/Bogota",
+  "currency": "COP",
+  "agent": {
+    "name": "Nina",
+    "instructions": "Habla en español neutro con frases breves y trato cálido. Haz una pregunta a la vez. Pregunta el nombre y la especie de la mascota. La primera visita de una mascota nueva es una consulta general. No des indicaciones médicas."
+  },
+  "providers": [
+    {
+      "id": "elena",
+      "name": "Dra. Elena Ruiz",
+      "specialty": "general",
+      "initials": "ER",
+      "color": "#288f77",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "tomas",
+      "name": "Dr. Tomás Vega",
+      "specialty": "general",
+      "initials": "TV",
+      "color": "#288f77",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "irene",
+      "name": "Dra. Irene Soto",
+      "specialty": "dermatologia",
+      "initials": "IS",
+      "color": "#288f77",
+      "weekdays": "2,4",
+      "start_hour": 14,
+      "end_hour": 19
+    }
+  ],
+  "services": [
+    {
+      "id": "consulta",
+      "name": "Consulta general",
+      "duration": 30,
+      "buffer": 10,
+      "price": 70000,
+      "specialty": "general",
+      "description": "Revisión general de la mascota."
+    },
+    {
+      "id": "vacuna",
+      "name": "Vacunación",
+      "duration": 20,
+      "buffer": 10,
+      "price": 55000,
+      "specialty": "general",
+      "description": "Aplicación de vacuna según el plan indicado por el veterinario."
+    },
+    {
+      "id": "dermatologia",
+      "name": "Valoración de dermatología",
+      "duration": 45,
+      "buffer": 10,
+      "price": 110000,
+      "specialty": "dermatologia",
+      "description": "Valoración de problemas de piel y pelaje."
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Consultorio 1"
+    },
+    {
+      "id": 2,
+      "name": "Consultorio 2"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en COP. Medicamentos, estudios y procedimientos se informan después de la valoración. El agente no cobra ni confirma pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Trae el carné de vacunación si lo tienes. Lleva a tu mascota con correa o transportadora. Llega 10 minutos antes."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no diagnostica ni receta. Ante dificultad para respirar, sangrado, convulsiones, atropellamiento o envenenamiento debe indicar que se acuda de inmediato a una urgencia veterinaria. Las dudas médicas quedan como solicitud para el equipo."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Atienden gatos? Sí, perros y gatos. ¿Atienden animales exóticos? No: registra una solicitud para confirmar con el equipo. ¿Dan cita el mismo día? Solo si la agenda muestra lugar."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+name: Validate community kit
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      # Las plantillas generadas ocupan unos 15 GB y el runner trae unos 14 GB libres.
+      - name: Free disk space for the generated projects
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/share/swift
+          df -h /
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Install browser for dashboard regressions
+        run: npx --yes --package=@playwright/test@1.64.1 playwright install --with-deps chrome
+      - run: node tools/validate-projects.mjs
+      - run: node tools/production-http.mjs --project .validation/production
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: local-validation
+          path: .validation/results.json

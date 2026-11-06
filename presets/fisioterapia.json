@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "kind": "fisioterapia",
+  "slug": "movimiento-demo",
+  "name": "Movimiento Vital",
+  "city": "Monterrey",
+  "timezone": "America/Monterrey",
+  "currency": "MXN",
+  "agent": {
+    "name": "Clara",
+    "instructions": "Habla en español mexicano con frases breves y tono tranquilo. Haz una pregunta a la vez. La primera visita siempre es una valoración. No indiques ejercicios ni prometas un número de sesiones."
+  },
+  "providers": [
+    {
+      "id": "laura",
+      "name": "Lic. Laura Peña",
+      "specialty": "general",
+      "initials": "LP",
+      "color": "#288f77",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "hector",
+      "name": "Lic. Héctor Díaz",
+      "specialty": "general",
+      "initials": "HD",
+      "color": "#288f77",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "daniela",
+      "name": "Lic. Daniela Cano",
+      "specialty": "deportiva",
+      "initials": "DC",
+      "color": "#288f77",
+      "weekdays": "2,4",
+      "start_hour": 14,
+      "end_hour": 19
+    }
+  ],
+  "services": [
+    {
+      "id": "valoracion",
+      "name": "Valoración inicial",
+      "duration": 45,
+      "buffer": 10,
+      "price": 650,
+      "specialty": "general",
+      "description": "Primera visita: historia del problema y evaluación física."
+    },
+    {
+      "id": "sesion",
+      "name": "Sesión de fisioterapia",
+      "duration": 50,
+      "buffer": 10,
+      "price": 700,
+      "specialty": "general",
+      "description": "Sesión de seguimiento indicada por el fisioterapeuta."
+    },
+    {
+      "id": "deportiva",
+      "name": "Valoración deportiva",
+      "duration": 60,
+      "buffer": 10,
+      "price": 850,
+      "specialty": "deportiva",
+      "description": "Primera visita para lesiones relacionadas con el deporte."
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Cabina 1"
+    },
+    {
+      "id": 2,
+      "name": "Cabina 2"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en MXN. Los paquetes de sesiones se definen después de la valoración. El agente no cobra ni confirma pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Usa ropa cómoda. Trae tus estudios o tu indicación médica si los tienes. Llega 10 minutos antes."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no diagnostica ni indica tratamientos. Ante un golpe fuerte reciente, pérdida de fuerza o sensibilidad, o dolor de pecho debe recomendar atención médica de inmediato. Las dudas clínicas quedan como solicitud para el equipo."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Necesito receta? No para la valoración. ¿Cuántas sesiones voy a necesitar? Lo define el fisioterapeuta en la valoración. ¿Atienden a domicilio? No en esta demostración."
+    }
+  ]
+}

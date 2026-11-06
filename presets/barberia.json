@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "kind": "barberia",
+  "slug": "navaja-demo",
+  "name": "Navaja Norte",
+  "city": "Monterrey",
+  "timezone": "America/Monterrey",
+  "currency": "MXN",
+  "agent": {
+    "name": "Beto",
+    "instructions": "Habla en español mexicano, relajado y breve. Haz una pregunta a la vez. Pregunta si quiere corte, barba o los dos. Corte y barba juntos es un solo servicio. No prometas un estilo que no aparezca en la información del negocio."
+  },
+  "providers": [
+    {
+      "id": "nico",
+      "name": "Nico Treviño",
+      "specialty": "general",
+      "initials": "NT",
+      "color": "#288f77",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "raul",
+      "name": "Raúl Garza",
+      "specialty": "general",
+      "initials": "RG",
+      "color": "#288f77",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "iker",
+      "name": "Iker Lozano",
+      "specialty": "diseno",
+      "initials": "IL",
+      "color": "#288f77",
+      "weekdays": "2,4",
+      "start_hour": 14,
+      "end_hour": 19
+    }
+  ],
+  "services": [
+    {
+      "id": "corte",
+      "name": "Corte de cabello",
+      "duration": 30,
+      "buffer": 5,
+      "price": 250,
+      "specialty": "general",
+      "description": "Corte con máquina y tijera."
+    },
+    {
+      "id": "combo",
+      "name": "Corte y barba",
+      "duration": 50,
+      "buffer": 10,
+      "price": 380,
+      "specialty": "general",
+      "description": "Un solo servicio con el mismo barbero y la misma silla."
+    },
+    {
+      "id": "diseno",
+      "name": "Diseño de barba",
+      "duration": 30,
+      "buffer": 10,
+      "price": 220,
+      "specialty": "diseno",
+      "description": "Perfilado y diseño con navaja."
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Silla 1"
+    },
+    {
+      "id": 2,
+      "name": "Silla 2"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Los precios son ficticios y orientativos en MXN. El agente no cobra ni confirma pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Llega 5 minutos antes. Si traes una foto del estilo que quieres, enséñasela a tu barbero."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no recomienda productos para irritación o lesiones de la piel. Las quejas y los servicios fuera del catálogo quedan como solicitud para el equipo."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Atienden sin cita? Solo si hay lugar al llegar; el agente no puede garantizarlo. ¿Atienden niños? Sí, con el servicio de corte. ¿Puedo elegir barbero? Sí, si tiene lugar."
+    }
+  ]
+}

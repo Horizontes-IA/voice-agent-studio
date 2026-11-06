@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "kind": "salon",
+  "slug": "luna-demo",
+  "name": "Luna Estudio",
+  "city": "Guadalajara",
+  "timezone": "America/Monterrey",
+  "agent": {
+    "name": "Lía",
+    "instructions": "Habla en español mexicano con frases breves. Haz una pregunta a la vez. Pregunta si quiere corte o el paquete corte + tratamiento. El paquete usa una especialista durante 75 minutos más 15 de preparación. No encadenes reservas separadas ni prometas cambio de especialista."
+  },
+  "providers": [
+    {
+      "id": "lia",
+      "name": "Lía Martínez",
+      "specialty": "general",
+      "initials": "LM",
+      "color": "#288f77",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "maya",
+      "name": "Maya Flores",
+      "specialty": "general",
+      "initials": "MF",
+      "color": "#288f77",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "nora",
+      "name": "Nora Pérez",
+      "specialty": "color",
+      "initials": "NP",
+      "color": "#288f77",
+      "weekdays": "2,4",
+      "start_hour": 14,
+      "end_hour": 19
+    }
+  ],
+  "services": [
+    {
+      "id": "corte",
+      "name": "Corte y peinado",
+      "duration": 45,
+      "buffer": 10,
+      "price": 450,
+      "specialty": "general",
+      "description": "Corte y peinado"
+    },
+    {
+      "id": "ritual",
+      "name": "Corte + tratamiento",
+      "duration": 75,
+      "buffer": 15,
+      "price": 850,
+      "specialty": "general",
+      "description": "Paquete secuencial: corte 45 min y tratamiento 30 min, con la misma especialista y el mismo puesto. Se reserva una sola cita de 75 min."
+    },
+    {
+      "id": "color",
+      "name": "Consulta de color",
+      "duration": 30,
+      "buffer": 10,
+      "price": 250,
+      "specialty": "color",
+      "description": "Consulta previa. La coloración completa y su presupuesto se gestionan con recepción."
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "# Luna Estudio\nNegocio ficticio en Guadalajara, México. Todos los negocios, personas, precios y órdenes son ficticios. No inventes dirección, contacto, disponibilidad, pagos realizados ni mensajes enviados. La identidad se elige en el panel para la demo; no equivale a verificación real.\nHorario general: lunes a viernes 09:00–19:00 y sábado 09:00–14:00; domingo cerrado. La agenda del sistema determina la disponibilidad exacta."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "- Corte y peinado: Corte y peinado\n- Corte + tratamiento: Paquete secuencial: corte 45 min y tratamiento 30 min, con la misma especialista y el mismo puesto. Se reserva una sola cita de 75 min.\n- Consulta de color: Consulta previa. La coloración completa y su presupuesto se gestionan con recepción.\nConsulta get_service_catalog para precios, duración y especialidad; los precios de demostración son MXN."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Negocio",
+      "content": "Lía Martínez: especialidad general; días de semana numéricos 1,2,3,4,5 (domingo=0), de 9 a 19.\nMaya Flores: especialidad general; días de semana numéricos 2,3,4,5,6 (domingo=0), de 9 a 19.\nNora Pérez: especialidad color; días de semana numéricos 2,4 (domingo=0), de 14 a 19.\nNo deduzcas disponibilidad a partir de horarios: usa search_availability."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Toda reserva requiere resumen y aceptación explícita antes de commit. Cambios y cancelaciones automáticos hasta 24 horas antes; después, solicita revisión de recepción. Llegar 10 minutos antes. Dos puestos compartidos. No hay cobros ni penalizaciones automáticas."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Administración",
+      "content": "Consulta siempre el catálogo. No inventes promociones, seguros, descuentos ni presupuestos finales. No pidas tarjetas. Cualquier cambio de presupuesto se revisa con una persona."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Clientes",
+      "content": "Pregunta si quiere corte o el paquete corte + tratamiento. El paquete usa una especialista durante 75 minutos más 15 de preparación. No encadenes reservas separadas ni prometas cambio de especialista."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "No recomiendes procedimientos ante alergias o lesiones ni garantices resultados. Casos especiales y servicios con varias especialistas requieren revisión humana. No hay pagos ni recordatorios conectados.\ncreate_staff_request registra una solicitud pendiente. No realiza transferencia de voz ni garantiza respuesta inmediata. Para menores, terceros o problemas de identidad, solicita revisión de una persona."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "Clientes",
+      "content": "¿Puedo reservar corte y tratamiento? Sí, selecciona el paquete del catálogo. ¿Quiero coloración completa? Reserva consulta de color o solicita revisión de recepción. ¿Puedo elegir especialista? Sí, sujeto a compatibilidad."
+    }
+  ]
+}

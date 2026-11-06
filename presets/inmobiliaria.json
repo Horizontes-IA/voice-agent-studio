@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "kind": "inmobiliaria",
+  "slug": "casa-alta-demo",
+  "name": "Casa Alta",
+  "city": "Ciudad de México",
+  "timezone": "America/Mexico_City",
+  "currency": "MXN",
+  "agent": {
+    "name": "Renata",
+    "instructions": "Habla en español mexicano con frases breves y tono profesional. Haz una pregunta a la vez. Pregunta si busca comprar o rentar y en qué zona. Habla solo de las propiedades de la knowledge base y no prometas plusvalía ni crédito.",
+    "capture": {
+      "lead": {
+        "title": "Prospectos",
+        "fields": [
+          {
+            "id": "operacion",
+            "label": "Quiere comprar o rentar",
+            "type": "choice",
+            "options": [
+              "comprar",
+              "rentar"
+            ],
+            "required": true
+          },
+          {
+            "id": "zona",
+            "label": "Zona que busca",
+            "type": "text",
+            "required": true
+          },
+          {
+            "id": "presupuesto",
+            "label": "Presupuesto aproximado",
+            "type": "text",
+            "required": false
+          },
+          {
+            "id": "plazo",
+            "label": "Cuándo quiere mudarse",
+            "type": "text",
+            "required": true
+          },
+          {
+            "id": "credito",
+            "label": "Forma de pago",
+            "type": "choice",
+            "options": [
+              "contado",
+              "credito",
+              "no_sabe"
+            ],
+            "required": false
+          },
+          {
+            "id": "temperatura",
+            "label": "Interés",
+            "type": "choice",
+            "options": [
+              "caliente",
+              "tibio",
+              "frio"
+            ],
+            "required": true
+          }
+        ],
+        "samples": [
+          {
+            "summary": "Busca departamento en renta y quiere visitarlo esta semana.",
+            "answers": {
+              "operacion": "rentar",
+              "zona": "Roma Norte",
+              "presupuesto": "25,000 al mes",
+              "plazo": "Este mes",
+              "credito": "contado",
+              "temperatura": "caliente"
+            }
+          },
+          {
+            "summary": "Compra con crédito, pero aún no tiene aprobación.",
+            "answers": {
+              "operacion": "comprar",
+              "zona": "Coyoacán",
+              "presupuesto": "8 millones",
+              "plazo": "En tres meses",
+              "credito": "credito",
+              "temperatura": "tibio"
+            }
+          },
+          {
+            "summary": "Solo estaba comparando precios y prefirió no agendar.",
+            "answers": {
+              "operacion": "comprar",
+              "zona": "Todavía no lo decide",
+              "plazo": "Sin fecha",
+              "credito": "no_sabe",
+              "temperatura": "frio"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "providers": [
+    {
+      "id": "marcela",
+      "name": "Marcela Ibarra",
+      "specialty": "residencial",
+      "initials": "MI",
+      "color": "#288f77",
+      "weekdays": "1,2,3,4,5",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "rodrigo",
+      "name": "Rodrigo Salas",
+      "specialty": "residencial",
+      "initials": "RS",
+      "color": "#288f77",
+      "weekdays": "2,3,4,5,6",
+      "start_hour": 9,
+      "end_hour": 19
+    },
+    {
+      "id": "patricia",
+      "name": "Patricia Luna",
+      "specialty": "comercial",
+      "initials": "PL",
+      "color": "#288f77",
+      "weekdays": "2,4",
+      "start_hour": 14,
+      "end_hour": 19
+    }
+  ],
+  "services": [
+    {
+      "id": "asesoria",
+      "name": "Asesoría inicial",
+      "duration": 30,
+      "buffer": 10,
+      "price": 0,
+      "specialty": "residencial",
+      "description": "Conversación para entender qué busca y cómo puede comprar o rentar."
+    },
+    {
+      "id": "visita",
+      "name": "Visita a propiedad",
+      "duration": 60,
+      "buffer": 30,
+      "price": 0,
+      "specialty": "residencial",
+      "description": "Recorrido con un asesor. Incluye 30 minutos de traslado en la agenda."
+    },
+    {
+      "id": "comercial",
+      "name": "Asesoría de local comercial",
+      "duration": 45,
+      "buffer": 10,
+      "price": 0,
+      "specialty": "comercial",
+      "description": "Conversación sobre locales y oficinas."
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "Unidad 1"
+    },
+    {
+      "id": 2,
+      "name": "Unidad 2"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-business",
+      "title": "Conoce el negocio",
+      "category": "Negocio",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-services",
+      "title": "Servicios y alcance",
+      "category": "Servicios",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-team",
+      "title": "Equipo",
+      "category": "Equipo",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-policies",
+      "title": "Reservas y cambios",
+      "category": "Políticas",
+      "content": "Se genera con los datos de la configuración."
+    },
+    {
+      "id": "kb-prices",
+      "title": "Precios y pagos",
+      "category": "Precios",
+      "content": "Las asesorías y visitas no tienen costo en esta demostración. Los precios de las propiedades son ficticios. El agente no acepta ofertas, apartados ni pagos."
+    },
+    {
+      "id": "kb-first",
+      "title": "Antes de la visita",
+      "category": "Visita",
+      "content": "Propiedades de ejemplo: Departamento Roma, 2 recámaras, renta 24,000 MXN al mes. Casa Coyoacán, 3 recámaras, venta 7,800,000 MXN. Local Narvarte, 80 m², renta 32,000 MXN al mes. Trae identificación oficial a la visita."
+    },
+    {
+      "id": "kb-escalation",
+      "title": "Límites y atención humana",
+      "category": "Protocolos",
+      "content": "El agente no da valuaciones ni promete plusvalía, rentabilidad o crédito. Las ofertas, negociaciones y apartados quedan como solicitud para un asesor."
+    },
+    {
+      "id": "kb-faq",
+      "title": "Preguntas frecuentes",
+      "category": "FAQ",
+      "content": "¿Puedo visitar más de una propiedad? Cada visita se agenda por separado. ¿Tienen crédito propio? No: el asesor orienta sobre opciones. ¿La propiedad sigue disponible? El asesor lo confirma antes de la visita."
+    }
+  ]
+}
