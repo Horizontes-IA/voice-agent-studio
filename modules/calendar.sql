@@ -1,0 +1,1 @@
+CREATE TABLE calendar_sync (appointment_id TEXT PRIMARY KEY REFERENCES appointments(id), event_id TEXT, synced_version INTEGER NOT NULL DEFAULT 0, state TEXT NOT NULL DEFAULT 'pending', attempts INTEGER NOT NULL DEFAULT 0, last_error TEXT, updated_at TEXT NOT NULL DEFAULT (datetime('now')));

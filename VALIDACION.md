@@ -1,8 +1,10 @@
-# Validación de entrega · v1.3.2 · 6 de noviembre de 2026
+# Validación de entrega · v1.3.3 · 12 de noviembre de 2026
 
-Las v1.3.1 y v1.3.2 agregan el instalador de skills, instrucciones para la IA, `npm run check` en la raíz del kit, un reintento en `deploy:guided` y cambios de texto. No cambian las plantillas ni el agente. Salvo lo que sigue, los resultados de esta página se midieron en la v1.3.0, el 4 de noviembre de 2026.
+La v1.3.3 agrega un módulo opcional de Google Calendar (`modules/calendar.ts.txt` y `modules/calendar.sql`) y su guía `conectar-calendario`; no cambia las plantillas generadas ni el agente. Las v1.3.1 y v1.3.2 agregan el instalador de skills, instrucciones para la IA, `npm run check` en la raíz del kit, un reintento en `deploy:guided` y cambios de texto. No cambian las plantillas ni el agente. Salvo lo que sigue, los resultados de esta página se midieron en la v1.3.0, el 4 de noviembre de 2026.
 
-**Prueba del 6 de noviembre, estética con recepción:** instalación limpia desde el repositorio público y despliegue real en Cloudflare y ElevenLabs. Una conversación completa con voz sintética entrando por el micrófono: ElevenLabs transcribió bien las 4 frases y la cita quedó en la agenda, de 14:00 a 15:15 más 15 de preparación. Sigue sin probarse una persona hablando en un micrófono real. Dental y taller no se probaron con este método.
+**Prueba del 6 de noviembre, estética con recepción:** instalación limpia desde el repositorio público y despliegue real en Cloudflare y ElevenLabs. Una conversación completa con voz sintética entrando por el micrófono: ElevenLabs transcribió bien las 4 frases y la cita quedó en la agenda, de 14:00 a 15:15 más 15 de preparación. Dental y taller no se probaron con este método.
+
+**Prueba del 12 de noviembre, estética con recepción y Google Calendar:** demo desplegada en Cloudflare y ElevenLabs con el módulo de Calendar. Una persona habló en un micrófono real desde el dashboard: 163 segundos, el agente buscó huecos, pidió confirmación y reservó con `status=booked`; la cita quedó en la agenda y su evento apareció en Google Calendar, con la hora local correcta y sin enlace de Meet. Crear, mover y cancelar se probaron en local contra Google Calendar real; en producción se probó crear, por la tarea programada y por la llamada. En modo demo la cita sale a nombre de la identidad ficticia elegida por administración, no de quien llama.
 
 La v1.3.0 agrega doce negocios, ocho skills y tres herramientas. Todo lo nuevo se probó en local. **Nada nuevo se ha probado con voz real de ElevenLabs ni por teléfono.** La versión tiene 21 plantillas: 3 con voz real y 18 sin ella.
 
@@ -35,6 +37,7 @@ La v1.3.0 agrega doce negocios, ocho skills y tres herramientas. Todo lo nuevo s
 - **NOT_RUN:** invocar los skills desde Claude Code o Codex como comando.
 - **NOT_RUN:** seguir de punta a punta `propuesta-cliente`, `entrega-cliente` y `conectar-telefono`. Se comprobó su estructura y que existan los archivos que nombran.
 - **NOT_RUN:** `conectar-telefono` contra un teléfono real. Es una guía: el kit sigue atendiendo por navegador y falta el desarrollo que describe.
+- **NOT_RUN:** el módulo de Calendar en otras plantillas, en modo production y con mover o cancelar en producción. Los costos y límites de Composio para varios clientes no se verificaron.
 - **NOT_RUN:** `reporte-llamadas --remote` contra una D1 desplegada.
 - **NOT_RUN:** revisión de las políticas de salud, legales y financieras por un profesional de cada sector.
 

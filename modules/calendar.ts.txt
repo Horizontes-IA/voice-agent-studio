@@ -1,0 +1,140 @@
+import { now } from "./data";
+
+interface CalendarEnv {
+  DB: D1Database;
+  COMPOSIO_API_KEY?: string;
+  COMPOSIO_USER_ID?: string;
+  COMPOSIO_ACCOUNT_ID?: string;
+  CALENDAR_ID?: string;
+}
+interface Row {
+  id: string;
+  status: string;
+  version: number;
+  starts_at: string;
+  ends_at: string;
+  source: string;
+  patient_name: string;
+  phone: string;
+  service_name: string;
+  provider_name: string;
+  event_id: string | null;
+}
+
+const API = "https://backend.composio.dev/api/v3.1";
+const MAX_ATTEMPTS = 5;
+
+async function run(env: CalendarEnv, slug: string, args: object) {
+  const res = await fetch(`${API}/tools/execute/${slug}`, {
+    method: "POST",
+    headers: {
+      "x-api-key": env.COMPOSIO_API_KEY as string,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user_id: env.COMPOSIO_USER_ID,
+      connected_account_id: env.COMPOSIO_ACCOUNT_ID,
+      arguments: args,
+    }),
+    signal: AbortSignal.timeout(20_000),
+  });
+  const body = (await res.json().catch(() => null)) as {
+    successful?: boolean;
+    data?: { id?: string; response_data?: { id?: string } };
+    error?: string | null;
+  } | null;
+  if (!res.ok || !body?.successful)
+    throw new Error(body?.error || `composio_http_${res.status}`);
+  return body.data?.id ?? body.data?.response_data?.id;
+}
+
+function details(r: Row) {
+  return {
+    summary: `${r.service_name} · ${r.patient_name}`,
+    description: [
+      `Cliente: ${r.patient_name}`,
+      `Teléfono: ${r.phone}`,
+      `Servicio: ${r.service_name}`,
+      `Especialista: ${r.provider_name}`,
+      `Origen: ${r.source === "agent" ? "agente de voz" : "dashboard"}`,
+    ].join("\n"),
+  };
+}
+
+async function syncOne(env: CalendarEnv, r: Row) {
+  const calendar_id = env.CALENDAR_ID;
+  if (r.status === "cancelled") {
+    if (r.event_id)
+      await run(env, "GOOGLECALENDAR_DELETE_EVENT", {
+        calendar_id,
+        event_id: r.event_id,
+        send_updates: "none",
+      });
+    return { event_id: r.event_id, state: "deleted" };
+  }
+  if (r.event_id) {
+    await run(env, "GOOGLECALENDAR_PATCH_EVENT", {
+      calendar_id,
+      event_id: r.event_id,
+      ...details(r),
+      start_time: r.starts_at,
+      end_time: r.ends_at,
+      timezone: "UTC",
+      send_updates: "none",
+    });
+    return { event_id: r.event_id, state: "synced" };
+  }
+  const event_id = await run(env, "GOOGLECALENDAR_CREATE_EVENT", {
+    calendar_id,
+    ...details(r),
+    start_datetime: r.starts_at.slice(0, 19),
+    end_datetime: r.ends_at.slice(0, 19),
+    timezone: "UTC",
+    create_meeting_room: false,
+    send_updates: "none",
+  });
+  if (!event_id) throw new Error("composio_sin_id_de_evento");
+  return { event_id, state: "synced" };
+}
+
+export async function syncCalendar(env: CalendarEnv, limit = 10) {
+  if (!env.COMPOSIO_API_KEY || !env.CALENDAR_ID)
+    return { synced: 0, failed: 0 };
+  const { results } = await env.DB.prepare(
+    `SELECT a.id,a.status,a.version,a.starts_at,a.ends_at,a.source,p.name patient_name,p.phone,s.name service_name,pr.name provider_name,cs.event_id FROM appointments a JOIN patients p ON p.id=a.patient_id JOIN services s ON s.id=a.service_id JOIN providers pr ON pr.id=a.provider_id LEFT JOIN calendar_sync cs ON cs.appointment_id=a.id WHERE a.source<>'demo' AND COALESCE(cs.attempts,0)<? AND ((a.status IN ('booked','confirmed','checked_in') AND (cs.event_id IS NULL OR cs.synced_version<>a.version)) OR (a.status='cancelled' AND cs.event_id IS NOT NULL AND cs.state<>'deleted')) ORDER BY a.created_at LIMIT ?`,
+  )
+    .bind(MAX_ATTEMPTS, limit)
+    .all<Row>();
+  let synced = 0;
+  let failed = 0;
+  for (const r of results) {
+    try {
+      const done = await syncOne(env, r);
+      await env.DB.prepare(
+        "INSERT INTO calendar_sync(appointment_id,event_id,synced_version,state,attempts,last_error,updated_at) VALUES(?,?,?,?,0,NULL,?) ON CONFLICT(appointment_id) DO UPDATE SET event_id=excluded.event_id,synced_version=excluded.synced_version,state=excluded.state,attempts=0,last_error=NULL,updated_at=excluded.updated_at",
+      )
+        .bind(r.id, done.event_id, r.version, done.state, now())
+        .run();
+      synced++;
+    } catch (e) {
+      await env.DB.prepare(
+        "INSERT INTO calendar_sync(appointment_id,state,attempts,last_error,updated_at) VALUES(?,'error',1,?,?) ON CONFLICT(appointment_id) DO UPDATE SET attempts=attempts+1,last_error=excluded.last_error,updated_at=excluded.updated_at",
+      )
+        .bind(r.id, String(e).slice(0, 300), now())
+        .run();
+      failed++;
+    }
+  }
+  return { synced, failed };
+}
+
+export function syncInBackground(c: {
+  env: CalendarEnv;
+  executionCtx: Pick<ExecutionContext, "waitUntil">;
+}) {
+  try {
+    c.executionCtx.waitUntil(syncCalendar(c.env).catch(() => undefined));
+  } catch {
+    // sin contexto de ejecución (pruebas): el cron lo sincroniza después
+  }
+}

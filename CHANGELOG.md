@@ -1,5 +1,12 @@
 # Cambios
 
+## 1.3.3
+
+- Módulo opcional de Google Calendar vía Composio: cada cita confirmada, ya sea por voz o desde el dashboard, crea su evento en un calendario; si la cita se mueve o se cancela, el evento se actualiza o se borra. La agenda oficial sigue siendo D1: el calendario es un reflejo de un solo sentido. Archivos: `modules/calendar.ts.txt` y `modules/calendar.sql`.
+- Guía `skills/voice-agent-studio/references/conectar-calendario.md`: la clave de proyecto de Composio y sus permisos, el enlace para que el cliente autorice su calendario, qué conexiones no sirven desde un Worker y cómo probarlo.
+- El módulo no se incluye en los proyectos generados: no cambia las plantillas ni los hashes de `worker/policy.ts` y `worker/eleven.ts`.
+- Probado en una demo de estética con una llamada real. Mover y cancelar solo se probaron en local. Sin probar en otras plantillas ni en modo production.
+
 ## 1.3.2
 
 - `npm run deploy:guided` ya no falla al iniciar sesión justo después de subir los secretos: espera y reintenta.

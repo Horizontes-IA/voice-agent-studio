@@ -288,7 +288,7 @@ test('documents agree on the counts and do not repeat the old ones',()=>{
   assert.ok(!/mínimo interno|consultoría de Santi/.test(read('materials/business/03-propuesta.md')));
   assert.ok(fs.existsSync(path.join(studioRoot,'AGENTS.md'))&&fs.existsSync(path.join(studioRoot,'CLAUDE.md')));
   for(const doc of ['README.md','INICIO.html','materials/launch/OFERTA.md','public/README.md'].filter(doc=>fs.existsSync(path.join(studioRoot,doc))))assert.match(read(doc),/\b21 plantillas|\b21 negocios/,doc);
-  const pkg=JSON.parse(read('package.json'));assert.equal(pkg.version,'1.3.2');assert.equal(JSON.parse(read('package-lock.json')).version,'1.3.2');
-  assert.ok(read('CHANGELOG.md').startsWith('# Cambios\n\n## 1.3.2'));assert.ok(read('VALIDACION.md').startsWith('# Validación de entrega · v1.3.2'));
+  const pkg=JSON.parse(read('package.json'));assert.equal(pkg.version,'1.3.3');assert.equal(JSON.parse(read('package-lock.json')).version,'1.3.3');
+  assert.ok(read('CHANGELOG.md').startsWith('# Cambios\n\n## 1.3.3'));assert.ok(read('VALIDACION.md').startsWith('# Validación de entrega · v1.3.3'));
   assert.match(read('VALIDACION.md').split('\n---\n')[0],/NOT_RUN/);
 });
